@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 00db4187e1573064bae941bbdf76c703
+timeCreated: 1503099774
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Renata CAT
+  fontNames:
+  - Renata CAT
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

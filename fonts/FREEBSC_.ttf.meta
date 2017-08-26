@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 577ea97b7911545499acaa8f1f2debca
+timeCreated: 1503418740
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Freebooter Script
+  fontNames:
+  - Freebooter Script
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

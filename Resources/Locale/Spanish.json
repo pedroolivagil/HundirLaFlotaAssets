@@ -1,0 +1,51 @@
+﻿{
+    "TITLE_APP": "Hundir la Flota",
+    "SLOGAN_APP": "Descubre el marinero que llevas dentro",
+    "COPYRIGHT_APP": "Copyright © 2017",
+    "VERSION_APP": "v.",
+    "CREDITS_APP": "Creado y desarrollado por OlivaDevelop",
+    "PRELOAD_SCREEN_GAME": "...preparando embarcación...",
+
+    "BUTTON_MUTLIPLAYER": "Jugar Online",
+    "BUTTON_SINGLEPLAYER": "Jugar",
+    "BUTTON_SETTINGS": "Configuración",
+    "BUTTON_EXIT": "Salir",
+    "BUTTON_VOLVER": "Volver al menú",
+    "BUTTON_START": "Empezar a jugar",
+    "BUTTON_SIGN_IN": "Entrar...",
+    "BUTTON_SIGN_UP": "Registrarse...",
+    "BUTTON_ACCEPT" : "Acceptar",
+    "BUTTON_CANCEL" : "Cancelar",
+
+    "TITLE_SINGLE_PLAYER_SCREEN": "Prepárate...",
+    "SUBTITLE_SIGNIN_SP": "Introduce tus datos para iniciar sesión",
+
+    "TOOGLE_LEVEL_EASY": "Nivel fácil",
+    "TOOGLE_LEVEL_MIDDLE": "Nivel medio",
+    "TOOGLE_LEVEL_HARD": "Nivel difícil",
+    "TOOGLE_LEVEL_EXTREME": "Nivel extremo",
+    "TOOGLE_CITY_FIRST": "Ciudad Krufs",
+    "TOOGLE_CITY_SECOND": "Ciudad Krebs",
+    "TOOGLE_CITY_THIRD": "Wentin Place",
+    "TOOGLE_CITY_FOURTH": "Villa Wool",
+    "TOOGLE_CITY_FIVETH": "Puerto Scooltown",
+
+    "DESCRIPT_EASY": "Comienza tu historia al modo más fácil, pero no te confíes o perecerás.",
+    "DESCRIPT_MIDDLE": "Comienza tu historia en un modo más normal, deberás ser cauto.",
+    "DESCRIPT_HARD": "Comienza tu historia al modo más difícil, esfuérzate al máximo o perecerás.",
+    "DESCRIPT_EXTREME":
+        "Comienza tu historia en un modo extremo, aquí las argucias no te servirán, deberás mostrar tu parte más estratégica o perecerás en un instante.",
+    "DESCRIPT_BASE":
+        "La estrategia de combate va aumentado a cada nivel y cada vez te resultará un poco más complicado ir avanzando.{$BR$}{$BR$}Elije una de las {$VAR$} batallas que debes afrontar, pero elije sabiamente, no podrás rectificar tu decisión. Como buen comandante, seguro que la decisión será la más adecuada.",
+
+    "PLACEHOLDER_USERNAME": "Introduce tu nombre de usuario",
+    "PLACEHOLDER_PASSWORD": "Introduce tu contraseña",
+
+    "CONNECTING_SERVER": "Conectando con el servidor...",
+    "INFO_USER_EXIST": "El usuario es correcto, iniciando sesión...",
+    "ERROR_USER_NOT_EXIST": "El usuario no existe o es incorrecto.",
+    "ERROR_UNABLE_TO_CONNECT_SERVER": "Fallo al conectar con el servidor.",
+    "ERROR_TIMEOUT": "Tiempo de espera agotado. Por favor, vuelve a intentarlo.",
+
+    "SURE_EXIT": "¿Seguro que deseas salir?"
+}
