@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour{
+    public static readonly string DIALOG_TAG = "Dialog";
     public static readonly int SINGLE_PLAYER = 0;
     public static readonly int MULTI_PLAYER = 1;
     public int screenWidth = 1920;

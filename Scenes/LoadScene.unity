@@ -155,7 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a39c01cd0009843898feccbfa2f777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  excludeTranslate: []
+  excludeTranslate:
+  - {fileID: 1532270126}
 --- !u!114 &124954141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SliderLoader: {fileID: 486616398}
   TextStatus: {fileID: 1532270126}
-  isMockBar: 1
+  isMockBar: 0
 --- !u!4 &124954142
 Transform:
   m_ObjectHideFlags: 0
@@ -346,7 +347,7 @@ Prefab:
     - target: {fileID: 224905078002832048, guid: 296159b27bcd4664fb790968b44234fa,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224905078002832048, guid: 296159b27bcd4664fb790968b44234fa,
         type: 2}

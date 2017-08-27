@@ -5,7 +5,7 @@ public class SceneTranlatable : MonoBehaviour{
     // Use this for initialization
     public Text[] excludeTranslate;
 
-    void Start(){
+    private void Awake(){
         ReplaceText();
     }
 
