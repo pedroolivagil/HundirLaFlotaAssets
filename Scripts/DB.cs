@@ -1,54 +1,78 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
 
 public class DB : MonoBehaviour{
-    public static string RESPONSE_LABEL = "response";
-
-    public string url_host = "http://localhost/HundirLaFlota3DServer";
-    public string url_login = "/www/login.php";
-
-    private static DB instance = null;
-    private string responseText;
+    public static readonly string RESPONSE_LABEL = "response";
+    public static readonly string UrlHost = "http://localhost/HundirLaFlota3DServer/";
+    public static readonly string UrlLogin = "www/login.php";
+    private static DB instance;
+    private GameObject DialogConnection;
 
     public static DB GetInstance(){
         init();
         return instance;
     }
 
-    public static void init(){
+    private static void init(){
         if (instance == null){
-            instance = GameObject.FindObjectOfType<DB>();
+            instance = new DB();
         }
+        DontDestroyOnLoad(instance);
     }
 
-    void Awake(){
-        init();
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    private IEnumerator Connection(WWWForm data, string url){
-        WWW con = new WWW(url_host + url, data);
-        yield return con;
-        responseText = con.text;
-    }
-
-    public JsonData JSONResponse(){
+    public static JsonData ParseJSON(string responseText){
         return JsonMapper.ToObject(responseText);
     }
 
-    public string GetResponseText(){
-        return responseText;
+    public void GetDialogConnection(){
+        Canvas c = FindObjectOfType<Canvas>();
+        Component[] objs = c.GetComponentsInChildren(typeof(Transform), true);
+        foreach (Component gObj in objs){
+            if (gObj.CompareTag(GameManager.DIALOG_TAG) && gObj.name == "DialogConnection"){
+                DialogConnection = gObj.gameObject;
+            }
+        }
+        Debug.Log(DialogConnection.name);
     }
 
-    public IEnumerator LoginUser(string user, string pass){
-        WWWForm data = new WWWForm();
-        data.AddField("user", user);
-        data.AddField("pass", pass);
-        yield return StartCoroutine(Connection(data, url_login));
+    public WWW Get(string url){
+        WWW www = new WWW(url);
+        WaitForSeconds w;
+        while (!www.isDone){
+            w = new WaitForSeconds(0.1f);
+        }
+        HideDialogConnection();
+        return www;
     }
 
-    public void CloseDB(){
-        responseText = null;
+    public WWW Post(string url, WWWForm form){
+        WWW www = new WWW(UrlHost + url, form);
+        WaitForSeconds w;
+        while (!www.isDone){
+            w = new WaitForSeconds(0.1f);
+        }
+        HideDialogConnection();
+        return www;
+    }
+
+    public WWW Post(string url, Dictionary<string, string> post){
+        WWWForm form = new WWWForm();
+        foreach (var pair in post){
+            form.AddField(pair.Key, pair.Value);
+        }
+        return Post(url, form);
+    }
+
+    public void ShowDialogConnection(){
+        GetDialogConnection();
+        DialogConnection.SetActive(true);
+        Debug.Log("Show");
+    }
+
+    public void HideDialogConnection(){
+        GetDialogConnection();
+        DialogConnection.SetActive(false);
+        Debug.Log("Hide");
     }
 }

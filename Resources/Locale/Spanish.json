@@ -21,7 +21,8 @@
     "TEXT_BUTTON_NEW_ACCOUNT": "No tienes cuenta? Create una ahora, es gratis!",
 
     "TITLE_SINGLE_PLAYER_SCREEN": "Prepárate...",
-    "SUBTITLE_SIGNIN_SP": "Introduce tus datos para iniciar sesión",
+
+    "LABEL_CONNECTING": "Conectando...",
 
     "TOOGLE_LEVEL_EASY": "Nivel fácil",
     "TOOGLE_LEVEL_MIDDLE": "Nivel medio",

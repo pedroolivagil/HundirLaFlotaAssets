@@ -19,6 +19,7 @@ public class MainMenuScene : MonoBehaviour{
             }
         }
     }
+
     public void ButtonExitGame(){
         foreach (GameObject dialog in Dialogs){
             if (dialog.name == dialogExitGame){

@@ -13,6 +13,14 @@ public class GameManager : MonoBehaviour{
     private static int gameMode;
     private static List<Resolution> listResolution;
 
+    public class ResponseCode{
+        public static readonly int CODE_000 = 0;
+        public static readonly int CODE_100 = 100;
+        public static readonly int CODE_200 = 200;
+        public static readonly int CODE_400 = 400;
+        public static readonly int CODE_404 = 404;
+    }
+
     // Use this for initialization
     void Start(){
         DontDestroyOnLoad(gameObject);
