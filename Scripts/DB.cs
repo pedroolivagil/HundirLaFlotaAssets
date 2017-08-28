@@ -17,8 +17,8 @@ public class DB : MonoBehaviour{
     private static void init(){
         if (instance == null){
             instance = new DB();
+            DontDestroyOnLoad(instance);
         }
-        DontDestroyOnLoad(instance);
     }
 
     public static JsonData ParseJSON(string responseText){
@@ -38,20 +38,14 @@ public class DB : MonoBehaviour{
 
     public WWW Get(string url){
         WWW www = new WWW(url);
-        WaitForSeconds w;
-        while (!www.isDone){
-            w = new WaitForSeconds(0.1f);
-        }
+        while (!www.isDone){ }
         HideDialogConnection();
         return www;
     }
 
     public WWW Post(string url, WWWForm form){
         WWW www = new WWW(UrlHost + url, form);
-        WaitForSeconds w;
-        while (!www.isDone){
-            w = new WaitForSeconds(0.1f);
-        }
+        while (!www.isDone){ }
         HideDialogConnection();
         return www;
     }

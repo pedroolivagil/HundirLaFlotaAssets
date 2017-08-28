@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using LitJson;
 
 public class LoginDialog : MonoBehaviour{
-    public Text textMessages;
     public InputField user;
     public InputField pass;
 
@@ -21,7 +20,7 @@ public class LoginDialog : MonoBehaviour{
         WWW response = DB.GetInstance().Post(DB.UrlLogin, data);
         string responseText = response.text;
         if (responseText != null){
-            textMessages.text = LocaleManager.GetInstance().TranslateStr("CONNECTING_SERVER");
+            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("CONNECTING_SERVER"));
             user.interactable = false;
             pass.interactable = false;
             JsonData responseJson = DB.ParseJSON(responseText);
@@ -45,7 +44,7 @@ public class LoginDialog : MonoBehaviour{
                 message = LocaleManager.GetInstance().TranslateStr("INFO_USER_EXIST");
             }
             Debug.Log("MSJ: " + message);
-            textMessages.text = message;
+            Notifier.GetInstance().SendMessage(message);
         }
     }
 }
