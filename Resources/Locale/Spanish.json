@@ -52,6 +52,7 @@
     "ERROR_UNABLE_TO_CONNECT_SERVER": "Fallo al conectar con el servidor.",
     "ERROR_TIMEOUT": "Tiempo de espera agotado. Por favor, vuelve a intentarlo.",
     "ERROR_PWD_NOT_EQUALS": "Las contraseñas no son iguales.",
+    "ERROR_ACCEPT_TERMS": "Debes aceptar los términos y condiciones",
 
     "SURE_EXIT": "¿Seguro que deseas salir?"
 }

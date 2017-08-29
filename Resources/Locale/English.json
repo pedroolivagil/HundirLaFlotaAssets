@@ -52,6 +52,7 @@
     "ERROR_UNABLE_TO_CONNECT_SERVER": "Fail to connect server.",
     "ERROR_TIMEOUT": "Timeout. Please, try again.",
     "ERROR_PWD_NOT_EQUALS": "Passwords are not the same",
+    "ERROR_ACCEPT_TERMS": "You should accept the terms and conditions",
 
     "ASK_EXIT": "Are you sure to quit the game?"
 }

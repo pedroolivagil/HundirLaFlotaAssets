@@ -8,15 +8,18 @@ public class SignUpDialog : MonoBehaviour{
     public InputField pass1;
     public InputField pass2;
     public InputField email;
+    public Toggle terms;
 
     public void SignUpUser(){
-        /**/
-        DB.GetInstance().ShowDialogConnection();
-        if (pass1.text.Equals(pass2.text)){
-            StartCoroutine(SignUp());
+        if (!terms.isOn){
+            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_ACCEPT_TERMS"));
+        }
+        else if (pass1.text == "" || pass2.text == "" || !pass1.text.Equals(pass2.text)){
+            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_PWD_NOT_EQUALS"));
         }
         else{
-            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_PWD_NOT_EQUALS"));
+            DB.GetInstance().ShowDialogConnection();
+            StartCoroutine(SignUp());
         }
     }
 
@@ -27,6 +30,7 @@ public class SignUpDialog : MonoBehaviour{
         data.AddField("password", pass1.text);
         data.AddField("email", email.text);
         WWW response = DB.GetInstance().Post(DB.UrlSignUp, data);
+
         string responseText = response.text;
         if (responseText != null){
             username.interactable = false;
