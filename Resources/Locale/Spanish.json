@@ -46,6 +46,7 @@
 
     "CONNECTING_SERVER": "Conectando con el servidor...",
     "INFO_USER_EXIST": "El usuario es correcto, iniciando sesión...",
+    "INFO_NEW_USER": "El usuario ha sido creado correctamente",
     "ERROR_USER_NOT_EXIST": "El usuario no existe o es incorrecto.",
     "ERROR_USER_EXIST": "El usuario o el email ya existe.",
     "ERROR_USERMAIL_BAD": "El email no es correcto.",

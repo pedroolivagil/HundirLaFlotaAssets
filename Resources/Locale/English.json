@@ -45,7 +45,8 @@
     "PLACEHOLDER_R_PASSWORD": "Re enter your password",
 
     "CONNECTING_SERVER": "Conecting to server...",
-    "INFO_USER_EXIST": "The user is correct, logging in ..",
+    "INFO_USER_EXIST": "The user is correct, sign in...",
+    "INFO_NEW_USER": "The user has been created correctly",
     "ERROR_USER_NOT_EXIST": "The user does not exist or is incorrect.",
     "ERROR_USER_EXIST": "The user or email already exists.",
     "ERROR_USERMAIL_BAD": "Email is not correct.",

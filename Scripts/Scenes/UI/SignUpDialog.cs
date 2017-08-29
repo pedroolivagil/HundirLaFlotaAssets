@@ -57,10 +57,21 @@ public class SignUpDialog : MonoBehaviour{
                 }
             }
             else{
-                message = LocaleManager.GetInstance().TranslateStr("INFO_USER_EXIST");
+                message = LocaleManager.GetInstance().TranslateStr("INFO_NEW_USER");
+                StartCoroutine(HideDialog());
             }
             Debug.Log("MSJ: " + message);
             Notifier.GetInstance().SendMessage(message);
         }
+    }
+
+    public IEnumerator HideDialog(){
+        yield return new WaitForSeconds(.5f);
+        DialogUI dialog = GetComponent<DialogUI>();
+        username.text = null;
+        pass1.text = null;
+        pass2.text = null;
+        email.text = null;
+        dialog.Cancel();
     }
 }
