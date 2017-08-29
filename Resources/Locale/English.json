@@ -19,6 +19,7 @@
 
     "TEXT_BUTTON_RECOVERY_PASS": "Forgot your password? Get it here by clicking here!",
     "TEXT_BUTTON_NEW_ACCOUNT": "You do not have an account? Create one now, it's free!",
+    "TEXT_BUTTON_TERMS": "I accept the terms and conditions",
 
     "TITLE_SINGLE_PLAYER_SCREEN": "Get ready...",
 
@@ -37,10 +38,13 @@
     "DESCRIPT_BASE":
         "The combat strategy is increased at each level and each time you will find it a little more complicated to move forward.{$BR$}{$BR$}Choose one of the {$VAR$} battles you must face, but choose wisely, you will not be able to rectify your decision. As a good commander, the decision will be most appropriate.",
 
+    "PLACEHOLDER_EMAIL": "Enter your email",
     "PLACEHOLDER_USERNAME": "Enter username or email",
+    "PLACEHOLDER_USER": "Enter your username",
     "PLACEHOLDER_PASSWORD": "Enter user password",
+    "PLACEHOLDER_R_PASSWORD": "Re enter your password",
 
-    "CONNECTING_SERVER": "",
+    "CONNECTING_SERVER": "Conecting to server...",
     "INFO_USER_EXIST": "The user is correct, logging in ..",
     "ERROR_USER_NOT_EXIST": "The user does not exist or is incorrect.",
     "ERROR_UNABLE_TO_CONNECT_SERVER": "Fail to connect server.",

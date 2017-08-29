@@ -23,7 +23,7 @@ public class Notifier : MonoBehaviour{
             AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/NotifierPanel.prefab", typeof(GameObject));
         GameObject notif = Instantiate(prefab, Vector3.one, Quaternion.identity) as GameObject;
         if (notif != null){
-            notif.SetActive(true);
+            GameManager.ActiveDialog(notif);
             notif.transform.position = new Vector3(0, -161, 0);
             notif.transform.SetParent(canvas.transform, false);
             Text msgText = notif.GetComponentInChildren<Text>();

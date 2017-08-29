@@ -76,4 +76,36 @@ public class GameManager : MonoBehaviour{
     public static bool ArrayContains(Object[] array, Object item){
         return new List<Object>(array).Contains(item);
     }
+
+    public static Component GetComponentWithName(string name){
+        return GetComponentWithName(name, null);
+    }
+
+    public static Component GetComponentWithName(string name, string tag){
+        Component retorno = null;
+        Canvas c = FindObjectOfType<Canvas>();
+        Component[] objs = c.GetComponentsInChildren(typeof(Transform), true);
+        foreach (Component gObj in objs){
+            if (gObj.name == name){
+                if (tag != null){
+                    if (gObj.CompareTag(tag)){
+                        retorno = gObj;
+                    }
+                }
+                else{
+                    retorno = gObj;
+                }
+            }
+        }
+        return retorno;
+    }
+
+    public static void ActiveDialog(GameObject dialog){
+        dialog.SetActive(true);
+        MoveInHierarchy(dialog);
+    }
+
+    public static void MoveInHierarchy(GameObject gameObject){
+        gameObject.transform.SetAsLastSibling();
+    }
 }

@@ -15,7 +15,7 @@ public class MainMenuScene : MonoBehaviour{
     public void ButtonPlayGame(){
         foreach (GameObject dialog in Dialogs){
             if (dialog.name == dialogFormLogin){
-                dialog.SetActive(true);
+                GameManager.ActiveDialog(dialog);
             }
         }
     }
@@ -23,7 +23,7 @@ public class MainMenuScene : MonoBehaviour{
     public void ButtonExitGame(){
         foreach (GameObject dialog in Dialogs){
             if (dialog.name == dialogExitGame){
-                dialog.SetActive(true);
+                GameManager.ActiveDialog(dialog);
             }
         }
     }

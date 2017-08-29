@@ -26,14 +26,10 @@ public class DB : MonoBehaviour{
     }
 
     public void GetDialogConnection(){
-        Canvas c = FindObjectOfType<Canvas>();
-        Component[] objs = c.GetComponentsInChildren(typeof(Transform), true);
-        foreach (Component gObj in objs){
-            if (gObj.CompareTag(GameManager.DIALOG_TAG) && gObj.name == "DialogConnection"){
-                DialogConnection = gObj.gameObject;
-            }
+        Component c = GameManager.GetComponentWithName("DialogConnection");
+        if (c != null){
+            DialogConnection = c.gameObject;
         }
-        Debug.Log(DialogConnection.name);
     }
 
     public WWW Get(string url){
@@ -61,12 +57,11 @@ public class DB : MonoBehaviour{
     public void ShowDialogConnection(){
         GetDialogConnection();
         DialogConnection.SetActive(true);
-        Debug.Log("Show");
+        GameManager.ActiveDialog(DialogConnection);
     }
 
     public void HideDialogConnection(){
         GetDialogConnection();
         DialogConnection.SetActive(false);
-        Debug.Log("Hide");
     }
 }

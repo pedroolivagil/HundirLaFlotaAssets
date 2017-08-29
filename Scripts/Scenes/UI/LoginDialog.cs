@@ -7,6 +7,13 @@ public class LoginDialog : MonoBehaviour{
     public InputField user;
     public InputField pass;
 
+    public void SignUp(){
+        Component c = GameManager.GetComponentWithName("DialogFormSignUp");
+        if (c != null){
+            GameManager.ActiveDialog(c.gameObject);
+        }
+    }
+
     public void LoginUser(){
         DB.GetInstance().ShowDialogConnection();
         StartCoroutine(Login());
@@ -20,7 +27,6 @@ public class LoginDialog : MonoBehaviour{
         WWW response = DB.GetInstance().Post(DB.UrlLogin, data);
         string responseText = response.text;
         if (responseText != null){
-            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("CONNECTING_SERVER"));
             user.interactable = false;
             pass.interactable = false;
             JsonData responseJson = DB.ParseJSON(responseText);

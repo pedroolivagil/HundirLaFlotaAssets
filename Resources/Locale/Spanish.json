@@ -19,6 +19,7 @@
 
     "TEXT_BUTTON_RECOVERY_PASS": "Has olvidado la contraseña? Recupérala pulsando aquí!",
     "TEXT_BUTTON_NEW_ACCOUNT": "No tienes cuenta? Create una ahora, es gratis!",
+    "TEXT_BUTTON_TERMS": "Acepto los términos y condiciones",
 
     "TITLE_SINGLE_PLAYER_SCREEN": "Prepárate...",
 
@@ -37,8 +38,11 @@
     "DESCRIPT_BASE":
         "La estrategia de combate va aumentado a cada nivel y cada vez te resultará un poco más complicado ir avanzando.{$BR$}{$BR$}Elije una de las {$VAR$} batallas que debes afrontar, pero elije sabiamente, no podrás rectificar tu decisión. Como buen comandante, seguro que la decisión será la más adecuada.",
 
+    "PLACEHOLDER_EMAIL": "Introduce tu email",
     "PLACEHOLDER_USERNAME": "Introduce tu usuario o email",
+    "PLACEHOLDER_USER": "Introduce tu usuario",
     "PLACEHOLDER_PASSWORD": "Introduce tu contraseña",
+    "PLACEHOLDER_R_PASSWORD": "Repite tu contraseña",
 
     "CONNECTING_SERVER": "Conectando con el servidor...",
     "INFO_USER_EXIST": "El usuario es correcto, iniciando sesión...",
