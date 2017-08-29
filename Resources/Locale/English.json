@@ -47,8 +47,11 @@
     "CONNECTING_SERVER": "Conecting to server...",
     "INFO_USER_EXIST": "The user is correct, logging in ..",
     "ERROR_USER_NOT_EXIST": "The user does not exist or is incorrect.",
+    "ERROR_USER_EXIST": "The user or email already exists.",
+    "ERROR_USERMAIL_BAD": "Email is not correct.",
     "ERROR_UNABLE_TO_CONNECT_SERVER": "Fail to connect server.",
     "ERROR_TIMEOUT": "Timeout. Please, try again.",
+    "ERROR_PWD_NOT_EQUALS": "Passwords are not the same",
 
     "ASK_EXIT": "Are you sure to quit the game?"
 }

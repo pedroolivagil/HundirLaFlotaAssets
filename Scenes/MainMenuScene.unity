@@ -1260,6 +1260,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114289108043830430, guid: 4f204d662765b8546bf5c2d8b8d94ec3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1105657144}
+    - target: {fileID: 114289108043830430, guid: 4f204d662765b8546bf5c2d8b8d94ec3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SignUpUser
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f204d662765b8546bf5c2d8b8d94ec3, type: 2}
   m_IsPrefabParent: 0
@@ -1435,6 +1445,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1105657144 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114368181279218066, guid: 4f204d662765b8546bf5c2d8b8d94ec3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1048040558}
+  m_Script: {fileID: 11500000, guid: 293d1917ca568d34dbf0b63f791e0950, type: 3}
 --- !u!1001 &1174467852
 Prefab:
   m_ObjectHideFlags: 0

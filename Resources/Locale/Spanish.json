@@ -47,8 +47,11 @@
     "CONNECTING_SERVER": "Conectando con el servidor...",
     "INFO_USER_EXIST": "El usuario es correcto, iniciando sesión...",
     "ERROR_USER_NOT_EXIST": "El usuario no existe o es incorrecto.",
+    "ERROR_USER_EXIST": "El usuario o el email ya existe.",
+    "ERROR_USERMAIL_BAD": "El email no es correcto.",
     "ERROR_UNABLE_TO_CONNECT_SERVER": "Fallo al conectar con el servidor.",
     "ERROR_TIMEOUT": "Tiempo de espera agotado. Por favor, vuelve a intentarlo.",
+    "ERROR_PWD_NOT_EQUALS": "Las contraseñas no son iguales.",
 
     "SURE_EXIT": "¿Seguro que deseas salir?"
 }
