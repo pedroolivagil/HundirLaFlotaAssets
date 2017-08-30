@@ -7,6 +7,7 @@ public class DB : MonoBehaviour{
     public static readonly string UrlHost = "http://localhost/HundirLaFlota3DServer/";
     public static readonly string UrlLogin = "www/login.php";
     public static readonly string UrlSignUp = "www/signup.php";
+    public static readonly string UrlRecoveryPass= "www/recovery_pass.php";
     private static DB instance;
     private GameObject DialogConnection;
 

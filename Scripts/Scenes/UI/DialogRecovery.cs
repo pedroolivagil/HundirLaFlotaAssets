@@ -1,49 +1,31 @@
 ﻿using System.Collections;
+using LitJson;
 using UnityEngine;
 using UnityEngine.UI;
-using LitJson;
 
-public class LoginDialog : MonoBehaviour{
-    public InputField user;
-    public InputField pass;
+public class DialogRecovery : MonoBehaviour{
+    public InputField email;
 
     public void RecoveryPass(){
-        Component c = GameManager.GetComponentWithName("DialogRecoveryPass");
-        if (c != null){
-            GameManager.ActiveDialog(c.gameObject);
-        }
-    }
-
-    public void SignUp(){
-        Component c = GameManager.GetComponentWithName("DialogFormSignUp");
-        if (c != null){
-            GameManager.ActiveDialog(c.gameObject);
-        }
-    }
-
-    public void LoginUser(){
         DB.GetInstance().ShowDialogConnection();
-        StartCoroutine(Login());
+        StartCoroutine(RecoveryPassword());
     }
 
-    private IEnumerator Login(){
-        yield return new WaitForSeconds(0.5f);
+    private IEnumerator RecoveryPassword(){
+        yield return new WaitForSeconds(.5f);
         WWWForm data = new WWWForm();
-        data.AddField("usermail", user.text);
-        data.AddField("password", pass.text);
-        WWW response = DB.GetInstance().Post(DB.UrlLogin, data);
+        data.AddField("email", email.text);
+        WWW response = DB.GetInstance().Post(DB.UrlRecoveryPass, data);
         string responseText = response.text;
         if (responseText != null){
-            user.interactable = false;
-            pass.interactable = false;
+            email.interactable = false;
             JsonData responseJson = DB.ParseJSON(responseText);
             int responseCode = (int) responseJson[DB.RESPONSE_LABEL];
             string message;
             Debug.Log("aqui entra(" + responseCode + "): " + responseText);
             if (responseCode != GameManager.ResponseCode.CODE_200){
-                user.interactable = true;
-                pass.interactable = true;
-                pass.text = null;
+                email.interactable = true;
+                email.text = null;
                 if (responseCode == GameManager.ResponseCode.CODE_404){
                     Debug.Log("Conection Fail");
                     message = LocaleManager.GetInstance().TranslateStr("ERROR_USER_NOT_EXIST");
@@ -54,7 +36,7 @@ public class LoginDialog : MonoBehaviour{
                 }
             }
             else{
-                message = LocaleManager.GetInstance().TranslateStr("INFO_USER_EXIST");
+                message = LocaleManager.GetInstance().TranslateStr(responseJson["message"].ToString());
             }
             Debug.Log("MSJ: " + message);
             Notifier.GetInstance().SendMessage(message);

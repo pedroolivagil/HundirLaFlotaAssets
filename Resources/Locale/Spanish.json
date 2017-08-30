@@ -24,6 +24,8 @@
     "TITLE_SINGLE_PLAYER_SCREEN": "Prepárate...",
 
     "LABEL_CONNECTING": "Conectando...",
+    "LABEL_EXIT": "¿Seguro que deseas salir?",
+    "LABEL_RECOVERY_PASS": "Introduce tu email de registro y te enviaremos un correo para recuperar la contraseña.",
 
     "TOOGLE_LEVEL_EASY": "Nivel fácil",
     "TOOGLE_LEVEL_MIDDLE": "Nivel medio",
@@ -47,13 +49,13 @@
     "CONNECTING_SERVER": "Conectando con el servidor...",
     "INFO_USER_EXIST": "El usuario es correcto, iniciando sesión...",
     "INFO_NEW_USER": "El usuario ha sido creado correctamente",
+    "INFO_SUCCESS_EMAIL_RECOVERY": "Se ha enviado el correo a tu cuenta. Sigue los pasos para recuperar tu contraseña.",
+
     "ERROR_USER_NOT_EXIST": "El usuario no existe o es incorrecto.",
     "ERROR_USER_EXIST": "El usuario o el email ya existe.",
     "ERROR_USERMAIL_BAD": "El email no es correcto.",
     "ERROR_UNABLE_TO_CONNECT_SERVER": "Fallo al conectar con el servidor.",
     "ERROR_TIMEOUT": "Tiempo de espera agotado. Por favor, vuelve a intentarlo.",
     "ERROR_PWD_NOT_EQUALS": "Las contraseñas no son iguales.",
-    "ERROR_ACCEPT_TERMS": "Debes aceptar los términos y condiciones",
-
-    "SURE_EXIT": "¿Seguro que deseas salir?"
+    "ERROR_ACCEPT_TERMS": "Debes aceptar los términos y condiciones"
 }
