@@ -27,10 +27,10 @@
     "LABEL_EXIT": "¿Seguro que deseas salir?",
     "LABEL_RECOVERY_PASS": "Introduce tu email de registro y te enviaremos un correo para recuperar la contraseña.",
 
-    "TOOGLE_LEVEL_EASY": "Nivel fácil",
-    "TOOGLE_LEVEL_MIDDLE": "Nivel medio",
-    "TOOGLE_LEVEL_HARD": "Nivel difícil",
-    "TOOGLE_LEVEL_EXTREME": "Nivel extremo",
+    "TOOGLE_LEVEL_EASY": "Fácil",
+    "TOOGLE_LEVEL_MIDDLE": "Medio",
+    "TOOGLE_LEVEL_HARD": "Difícil",
+    "TOOGLE_LEVEL_EXTREME": "Extremo",
 
     "DESCRIPT_EASY": "Comienza tu historia al modo más fácil, pero no te confíes o perecerás.",
     "DESCRIPT_MIDDLE": "Comienza tu historia en un modo más normal, deberás ser cauto.",

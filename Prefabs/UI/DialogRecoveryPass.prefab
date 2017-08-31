@@ -660,7 +660,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Reg\xEDstrate"
+  m_Text: 
 --- !u!114 &114756749042274046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -868,7 +868,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Entrar
+  m_Text: 
 --- !u!114 &114958543942260452
 MonoBehaviour:
   m_ObjectHideFlags: 1

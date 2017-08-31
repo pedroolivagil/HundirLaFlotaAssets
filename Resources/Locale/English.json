@@ -27,10 +27,10 @@
     "LABEL_EXIT": "Are you sure to quit the game?",
     "LABEL_RECOVERY_PASS": "Enter your registration email and we will send you an email to recover your password.",
 
-    "TOOGLE_LEVEL_EASY": "Level easy",
-    "TOOGLE_LEVEL_MIDDLE": "Level middle",
-    "TOOGLE_LEVEL_HARD": "Level hard",
-    "TOOGLE_LEVEL_EXTREME": "Level extreme",
+    "TOOGLE_LEVEL_EASY": "Easy",
+    "TOOGLE_LEVEL_MIDDLE": "Middle",
+    "TOOGLE_LEVEL_HARD": "Hard",
+    "TOOGLE_LEVEL_EXTREME": "Extreme",
 
     "DESCRIPT_EASY": "Begin your story in the easiest way, but do not trust or perish.",
     "DESCRIPT_MIDDLE": "Begin your story in a more normal way, you must be cautious.",

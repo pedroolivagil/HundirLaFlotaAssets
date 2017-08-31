@@ -3,6 +3,7 @@
 public class MainMenuScene : MonoBehaviour{
     public string dialogExitGame = "DialogExitGame";
     public string dialogFormLogin = "DialogFormLogin";
+    public string DialogConfig = "DialogConfig";
     private GameObject[] Dialogs;
 
     private void Start(){
@@ -15,6 +16,14 @@ public class MainMenuScene : MonoBehaviour{
     public void ButtonPlayGame(){
         foreach (GameObject dialog in Dialogs){
             if (dialog.name == dialogFormLogin){
+                GameManager.ActiveDialog(dialog);
+            }
+        }
+    }
+
+    public void ButtonConfig(){
+        foreach (GameObject dialog in Dialogs){
+            if (dialog.name == DialogConfig){
                 GameManager.ActiveDialog(dialog);
             }
         }
