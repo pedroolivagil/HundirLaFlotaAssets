@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour{
     // Use this for initialization
     void Start(){
         DontDestroyOnLoad(gameObject);
+        FillIniFile();
         listResolution = new List<Resolution>();
         foreach (Resolution res in Screen.resolutions){
             if (!listResolution.Contains(res)){
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour{
                 }
             }
         }
+        Debug.Log("INI: " + ReadIni.IniReadValue(ReadIni.Sections.Difficult, ReadIni.Keys.Level));
     }
 
     public static IEnumerator ExitGame(float time){
@@ -107,5 +109,13 @@ public class GameManager : MonoBehaviour{
 
     public static void MoveInHierarchy(GameObject gameObject){
         gameObject.transform.SetAsLastSibling();
+    }
+
+    private void FillIniFile(){
+        ReadIni.IniWriteValue(ReadIni.Sections.Screen, ReadIni.Keys.ScreenWidth, "1920");
+        ReadIni.IniWriteValue(ReadIni.Sections.Screen, ReadIni.Keys.ScreenHeight, "1080");
+        ReadIni.IniWriteValue(ReadIni.Sections.Locale, ReadIni.Keys.Locale, "English");
+        ReadIni.IniWriteValue(ReadIni.Sections.Locale, ReadIni.Keys.Locale, "Spanish");
+        ReadIni.IniWriteValue(ReadIni.Sections.Difficult, ReadIni.Keys.Level, "1");
     }
 }
