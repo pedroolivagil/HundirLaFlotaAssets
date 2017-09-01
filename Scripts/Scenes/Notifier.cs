@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Notifier : MonoBehaviour{
@@ -19,8 +18,7 @@ public class Notifier : MonoBehaviour{
 
     public void SendMessage(string message){
         Canvas canvas = FindObjectOfType<Canvas>();
-        Object prefab =
-            AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/NotifierPanel.prefab", typeof(GameObject));
+        Object prefab = Resources.Load("Prefabs/NotifierPanel", typeof(GameObject));
         GameObject notif = Instantiate(prefab, Vector3.one, Quaternion.identity) as GameObject;
         if (notif != null){
             GameManager.ActiveDialog(notif);
