@@ -19,10 +19,14 @@ public class SliderUI : MonoBehaviour{
     }
 
     private void UpdateCustomTextSlider(){
-        text.text = LocaleManager.GetInstance().TranslateStr(textsCustom[(int) slider.value]);
+        if (text != null){
+            text.text = LocaleManager.GetInstance().TranslateStr(textsCustom[(int) slider.value]);
+        }
     }
 
     private void UpdateTextSlider(){
-        text.text = slider.value + "";
+        if (text != null){
+            text.text = slider.value + "";
+        }
     }
 }

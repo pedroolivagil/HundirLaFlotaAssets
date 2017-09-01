@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour{
                 }
             }
         }
-        Debug.Log("INI: " + ReadIni.IniReadValue(ReadIni.Sections.Difficult, ReadIni.Keys.Level));
     }
 
     public static IEnumerator ExitGame(float time){
@@ -112,10 +111,14 @@ public class GameManager : MonoBehaviour{
     }
 
     private void FillIniFile(){
-        ReadIni.IniWriteValue(ReadIni.Sections.Screen, ReadIni.Keys.ScreenWidth, "1920");
-        ReadIni.IniWriteValue(ReadIni.Sections.Screen, ReadIni.Keys.ScreenHeight, "1080");
-        ReadIni.IniWriteValue(ReadIni.Sections.Locale, ReadIni.Keys.Locale, "English");
-        ReadIni.IniWriteValue(ReadIni.Sections.Locale, ReadIni.Keys.Locale, "Spanish");
-        ReadIni.IniWriteValue(ReadIni.Sections.Difficult, ReadIni.Keys.Level, "1");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Locale, "English");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Locale, "Spanish");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Level, "1");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Difficult, "1");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.SoundLevel, "10");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.MusicLevel, "10");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.ScreenWidth, "1920");
+        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.ScreenHeight, "1080");
+        ReadIni.WriteIni();
     }
 }

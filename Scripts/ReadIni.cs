@@ -14,20 +14,23 @@ public class ReadIni : MonoBehaviour{
     /// <summary>
     /// Sections list
     /// </summary>
-    public enum Sections{
+    public enum Section{
         Screen,
         Locale,
-        Difficult
+        PlayerSettings
     }
 
     /// <summary>
     /// Keys list
     /// </summary>
-    public enum Keys{
+    public enum Key{
         ScreenWidth,
         ScreenHeight,
         Locale,
         Level,
+        Difficult,
+        SoundLevel,
+        MusicLevel
     }
 
     private static bool FirstRead(){
@@ -58,15 +61,17 @@ public class ReadIni : MonoBehaviour{
 
     private static void PopulateIni(string _Section, string _Key, string _Value){
         if (IniDictionary.ContainsKey(_Section)){
-            if (IniDictionary[_Section].ContainsKey(_Key))
+            if (IniDictionary[_Section].ContainsKey(_Key)){
                 IniDictionary[_Section][_Key] = _Value;
-            else
+            }
+            else{
                 IniDictionary[_Section].Add(_Key, _Value);
+            }
         }
         else{
             Dictionary<string, string> neuVal = new Dictionary<string, string>();
-            neuVal.Add(_Key.ToString(), _Value);
-            IniDictionary.Add(_Section.ToString(), neuVal);
+            neuVal.Add(_Key, _Value);
+            IniDictionary.Add(_Section, neuVal);
         }
     }
 
@@ -77,33 +82,38 @@ public class ReadIni : MonoBehaviour{
     /// <param name="_Key"></param>
     /// <param name="_Value"></param>
     public static void IniWriteValue(string _Section, string _Key, string _Value){
-        if (!Initialized)
+        if (!Initialized){
             FirstRead();
+        }
         PopulateIni(_Section, _Key, _Value);
-        //write ini
-        WriteIni();
     }
 
     /// <summary>
     /// Write data to INI file. Section and Key bound by enum
     /// </summary>
-    /// <param name="_Section"></param>
-    /// <param name="_Key"></param>
+    /// <param name="section"></param>
+    /// <param name="key"></param>
     /// <param name="_Value"></param>
-    public static void IniWriteValue(Sections _Section, Keys _Key, string _Value){
-        IniWriteValue(_Section.ToString(), _Key.ToString(), _Value);
+    public static void IniWriteValue(Section section, Key key, string _Value){
+        IniWriteValue(section.ToString(), key.ToString(), _Value);
     }
 
-    private static void WriteIni(){
+    public static void WriteIni(){
+        if (!File.Exists(path)){
+            UpdateIni();
+        }
+    }
+
+    public static void UpdateIni(){
         using (StreamWriter sw = new StreamWriter(path)){
-            foreach (KeyValuePair<string, Dictionary<string, string>> sezioni in IniDictionary){
-                sw.WriteLine("[" + sezioni.Key.ToString() + "]");
-                foreach (KeyValuePair<string, string> chiave in sezioni.Value){
+            foreach (KeyValuePair<string, Dictionary<string, string>> section in IniDictionary){
+                sw.WriteLine("[" + section.Key + "]");
+                foreach (KeyValuePair<string, string> key in section.Value){
                     // value must be in one line
-                    string vale = chiave.Value.ToString();
+                    string vale = key.Value;
                     vale = vale.Replace(Environment.NewLine, " ");
                     vale = vale.Replace("\r\n", " ");
-                    sw.WriteLine(chiave.Key.ToString() + " = " + vale);
+                    sw.WriteLine(key.Key + " = " + vale);
                 }
             }
         }
@@ -112,13 +122,14 @@ public class ReadIni : MonoBehaviour{
     /// <summary>
     /// Read data from INI file. Section and Key bound by enum
     /// </summary>
-    /// <param name="_Section"></param>
-    /// <param name="_Key"></param>
+    /// <param name="section"></param>
+    /// <param name="key"></param>
     /// <returns></returns>
-    public static string IniReadValue(Sections _Section, Keys _Key){
-        if (!Initialized)
+    public static string IniReadValue(Section section, Key key){
+        if (!Initialized){
             FirstRead();
-        return IniReadValue(_Section.ToString(), _Key.ToString());
+        }
+        return IniReadValue(section.ToString(), key.ToString());
     }
 
     /// <summary>
@@ -128,11 +139,14 @@ public class ReadIni : MonoBehaviour{
     /// <param name="_Key"></param>
     /// <returns></returns>
     public static string IniReadValue(string _Section, string _Key){
-        if (!Initialized)
+        if (!Initialized){
             FirstRead();
-        if (IniDictionary.ContainsKey(_Section))
-            if (IniDictionary[_Section].ContainsKey(_Key))
+        }
+        if (IniDictionary.ContainsKey(_Section)){
+            if (IniDictionary[_Section].ContainsKey(_Key)){
                 return IniDictionary[_Section][_Key];
+            }
+        }
         return null;
     }
 }
