@@ -11,7 +11,6 @@ public class ConfigController : MonoBehaviour{
         sliderS.value = Convert.ToSingle(ReadIni.IniReadValue(ReadIni.Section.PlayerSettings, ReadIni.Key.SoundLevel));
         sliderM.value = Convert.ToSingle(ReadIni.IniReadValue(ReadIni.Section.PlayerSettings, ReadIni.Key.MusicLevel));
         sliderD.value = Convert.ToSingle(ReadIni.IniReadValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Difficult));
-        
     }
 
     public void UpdateSound(){

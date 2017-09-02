@@ -21,6 +21,10 @@ public class MainMenuScene : MonoBehaviour{
         }
     }
 
+    public void ButtonPlayOnlineGame(){
+        Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("INFO_DEVELOP_FUNCTION"));
+    }
+
     public void ButtonConfig(){
         foreach (GameObject dialog in Dialogs){
             if (dialog.name == DialogConfig){

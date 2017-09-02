@@ -13,6 +13,6 @@ public class NotifierUI : MonoBehaviour{
 
     public void DeleteManualNotifier(){
         StopCoroutine(DeleteNotifier());
-        Destroy(gameObject, .5f);
+        Destroy(gameObject, .1f);
     }
 }

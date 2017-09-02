@@ -47,9 +47,11 @@
     "PLACEHOLDER_R_PASSWORD": "Repite tu contraseña",
 
     "CONNECTING_SERVER": "Conectando con el servidor...",
+
     "INFO_USER_EXIST": "El usuario es correcto, iniciando sesión...",
     "INFO_NEW_USER": "El usuario ha sido creado correctamente",
     "INFO_SUCCESS_EMAIL_RECOVERY": "Se ha enviado el correo a tu cuenta. Sigue los pasos para recuperar tu contraseña.",
+    "INFO_DEVELOP_FUNCTION": "Acción en desarrollo",
 
     "ERROR_USER_NOT_EXIST": "El usuario no existe o es incorrecto.",
     "ERROR_USER_EXIST": "El usuario o el email ya existe.",
