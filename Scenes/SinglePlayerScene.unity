@@ -660,16 +660,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114723947628689832, guid: 11aef7357f01bde46ae4db7c12fb9dc3,
-        type: 2}
-      propertyPath: countDown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114723947628689832, guid: 11aef7357f01bde46ae4db7c12fb9dc3,
-        type: 2}
-      propertyPath: timeSeconds
-      value: 4000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11aef7357f01bde46ae4db7c12fb9dc3, type: 2}
   m_IsPrefabParent: 0

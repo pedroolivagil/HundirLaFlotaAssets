@@ -9,9 +9,10 @@ public class Timer : MonoBehaviour{
     public bool countDown;
 
     private Text timer;
+    private readonly int MAX_TIME = 5999;
     private int time;
-    float mins = 0;
-    float secs = 0;
+    private float mins;
+    private float secs;
 
     void Start(){
         timer = GetComponentInChildren<Text>();
@@ -25,26 +26,30 @@ public class Timer : MonoBehaviour{
 
     public void InitCountDown(){
         time = timeSeconds;
-        timer.text = "00:00";
+        timer.text = CalcTimeTextCountDown();
         StartCoroutine(UpdateTimerCountDown());
     }
 
     private void InitCounter(){
         time = timeSeconds;
-        timer.text = "00:00";
+        timer.text = CalcTimeText();
         StartCoroutine(UpdateTimer());
     }
 
     private IEnumerator UpdateTimer(){
         yield return new WaitForSeconds(1f);
+        time++;
+        mins = time / 60;
+        secs = ((time / 60f) - mins) * 60;
         timer.text = CalcTimeText();
-        if (time < 6039){
+        if (time < MAX_TIME){
             yield return UpdateTimer();
         }
     }
 
     private IEnumerator UpdateTimerCountDown(){
         yield return new WaitForSeconds(1f);
+        time--;
         timer.text = CalcTimeTextCountDown();
         if (time > 0){
             yield return UpdateTimerCountDown();
@@ -52,11 +57,9 @@ public class Timer : MonoBehaviour{
     }
 
     private string CalcTimeText(){
-        String text = "";
-        String minsText = "";
-        String secsText = "";
-        time++;
-        Debug.Log("Time: " + time);
+        string text;
+        string minsText;
+        string secsText;
         if (time % 60 == 0){
             mins++;
             secs = 0;
@@ -81,10 +84,9 @@ public class Timer : MonoBehaviour{
     }
 
     private string CalcTimeTextCountDown(){
-        String text = "";
-        String minsText = "";
-        String secsText = "";
-        time--;
+        string text;
+        string minsText;
+        string secsText;
         mins = time / 60;
         secs = ((time / 60f) - mins) * 60;
         if (mins < 10){
