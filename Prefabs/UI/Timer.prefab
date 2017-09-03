@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.503}
+  m_Color: {r: 0.31617647, g: 0.17662272, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -106,13 +106,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 80
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 91:57
+  m_Text: 00:00
 --- !u!114 &114247812734644556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bdaab6dee6f0a43b415b74d0f7d438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeSeconds: 360
+  countDown: 1
 --- !u!222 &222276329542403286
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -244,8 +246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 0, y: 10}
+  m_AnchoredPosition: {x: 9, y: 5}
+  m_SizeDelta: {x: -18, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224044262041582254
 RectTransform:
