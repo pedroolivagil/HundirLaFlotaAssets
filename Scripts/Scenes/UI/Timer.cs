@@ -36,13 +36,13 @@ public class Timer : MonoBehaviour{
         String minsText = "";
         String secsText = "";
         if (mins < 10){
-            minsText = " 0" + mins;
+            minsText = "0" + mins;
         }
         else{
             minsText = "" + mins;
         }
         if (seconds < 10){
-            secsText = " 0" + seconds;
+            secsText = "0" + seconds;
         }
         else{
             secsText = "" + seconds;
