@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using SharpConfig;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 public class GameManager : MonoBehaviour{
     public static readonly string DIALOG_TAG = "Dialog";
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour{
     public int screenHeigth = 1080;
     private static int gameMode;
     private static List<Resolution> listResolution;
+    private static Config config;
 
     public class ResponseCode{
         public static readonly int CODE_000 = 0;
@@ -24,7 +27,8 @@ public class GameManager : MonoBehaviour{
     // Use this for initialization
     void Start(){
         DontDestroyOnLoad(gameObject);
-        FillIniFile();
+        config = new Config();
+        config.Init();
         listResolution = new List<Resolution>();
         foreach (Resolution res in Screen.resolutions){
             if (!listResolution.Contains(res)){
@@ -109,16 +113,9 @@ public class GameManager : MonoBehaviour{
     public static void MoveInHierarchy(GameObject gameObject){
         gameObject.transform.SetAsLastSibling();
     }
-
-    private void FillIniFile(){
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Locale, "English");
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Locale, "Spanish");
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Level, "1");
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Difficult, "1");
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.SoundLevel, "10");
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.MusicLevel, "10");
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.ScreenWidth, "1920");
-        ReadIni.IniWriteValue(ReadIni.Section.PlayerSettings, ReadIni.Key.ScreenHeight, "1080");
-        ReadIni.WriteIni();
+    
+    
+    public static Config GetConfig(){
+        return config;
     }
 }

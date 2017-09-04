@@ -15,8 +15,6 @@ public class ReadIni : MonoBehaviour{
     /// Sections list
     /// </summary>
     public enum Section{
-        Screen,
-        Locale,
         PlayerSettings
     }
 
@@ -33,7 +31,7 @@ public class ReadIni : MonoBehaviour{
         MusicLevel
     }
 
-    private static bool FirstRead(){
+    public static bool FirstRead(){
         if (File.Exists(path)){
             using (StreamReader sr = new StreamReader(path)){
                 string line;
@@ -110,10 +108,10 @@ public class ReadIni : MonoBehaviour{
                 sw.WriteLine("[" + section.Key + "]");
                 foreach (KeyValuePair<string, string> key in section.Value){
                     // value must be in one line
-                    string vale = key.Value;
-                    vale = vale.Replace(Environment.NewLine, " ");
-                    vale = vale.Replace("\r\n", " ");
-                    sw.WriteLine(key.Key + " = " + vale);
+                    string value = key.Value;
+                    value = value.Replace(Environment.NewLine, " ");
+                    value = value.Replace("\r\n", " ");
+                    sw.WriteLine(key.Key + " = " + value);
                 }
             }
         }

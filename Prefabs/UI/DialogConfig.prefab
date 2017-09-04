@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 224230237205903810}
   - component: {fileID: 114210268253920522}
   - component: {fileID: 114791272014135088}
-  - component: {fileID: 114860375272252130}
   m_Layer: 5
   m_Name: DialogConfig
   m_TagString: Dialog
@@ -838,7 +837,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114860375272252130}
+      - m_Target: {fileID: 114791272014135088}
         m_MethodName: UpdateMusic
         m_Mode: 1
         m_Arguments:
@@ -1037,7 +1036,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114860375272252130}
+      - m_Target: {fileID: 114791272014135088}
         m_MethodName: SaveConfigChanges
         m_Mode: 1
         m_Arguments:
@@ -1132,6 +1131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d11a900adbef34f8c58e58aecc11f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderM: {fileID: 114466097043524440}
+  sliderS: {fileID: 114969986124443300}
+  sliderD: {fileID: 114893191984191324}
 --- !u!114 &114792301341945258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1277,20 +1279,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114860375272252130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1196952089172476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b34c969a1fec6409427eaf0d276f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderM: {fileID: 114466097043524440}
-  sliderS: {fileID: 114969986124443300}
-  sliderD: {fileID: 114893191984191324}
 --- !u!114 &114869567941054264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1362,7 +1350,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114860375272252130}
+      - m_Target: {fileID: 114791272014135088}
         m_MethodName: UpdateLevel
         m_Mode: 1
         m_Arguments:
@@ -1471,7 +1459,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114860375272252130}
+      - m_Target: {fileID: 114791272014135088}
         m_MethodName: UpdateSound
         m_Mode: 1
         m_Arguments:
