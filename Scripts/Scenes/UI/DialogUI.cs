@@ -11,6 +11,7 @@ public class DialogUI : MonoBehaviour{
     }
 
     private void HideDialog(){
+        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 }
