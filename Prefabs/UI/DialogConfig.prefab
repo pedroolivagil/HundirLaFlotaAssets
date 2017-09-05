@@ -723,7 +723,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Vol. Sonido
+  m_Text: LABEL_LEVEL_SOUND
 --- !u!114 &114235169221991770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1251,7 +1251,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Dificultad
+  m_Text: LABEL_LEVEL_DIFFICULT
 --- !u!114 &114856105501136772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1558,7 +1558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Vol. Musica
+  m_Text: LABEL_LEVEL_MUSICA
 --- !u!222 &222118657392471174
 CanvasRenderer:
   m_ObjectHideFlags: 1

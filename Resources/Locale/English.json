@@ -26,6 +26,9 @@
     "LABEL_CONNECTING": "Connecting...",
     "LABEL_EXIT": "Are you sure to quit the game?",
     "LABEL_RECOVERY_PASS": "Enter your registration email and we will send you an email to recover your password.",
+    "LABEL_LEVEL_SOUND": "Lvl. Sound",
+    "LABEL_LEVEL_MUSICA": "Lvl. Music",
+    "LABEL_LEVEL_DIFFICULT": "Difficult",
 
     "TOOGLE_LEVEL_EASY": "Easy",
     "TOOGLE_LEVEL_MIDDLE": "Middle",

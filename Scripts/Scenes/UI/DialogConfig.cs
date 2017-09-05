@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogConfig : MonoBehaviour{
@@ -12,9 +11,6 @@ public class DialogConfig : MonoBehaviour{
     }
 
     public void Init(){
-/*        sliderS.value = Convert.ToSingle(ReadIni.IniReadValue(ReadIni.Section.PlayerSettings, ReadIni.Key.SoundLevel));
-        sliderM.value = Convert.ToSingle(ReadIni.IniReadValue(ReadIni.Section.PlayerSettings, ReadIni.Key.MusicLevel));
-        sliderD.value = Convert.ToSingle(ReadIni.IniReadValue(ReadIni.Section.PlayerSettings, ReadIni.Key.Difficult));*/
         sliderS.value = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.SoundLevel);
         sliderM.value = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.MusicLevel);
         sliderD.value = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.Difficult);

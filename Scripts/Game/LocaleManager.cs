@@ -10,7 +10,7 @@ using System.Text;
  * En caso que tampoco la encuentre, devuelve el texto de la etiqueta que se busca
  */
 public class LocaleManager{
-    private static LocaleManager instance = null;
+    private static LocaleManager instance;
     private JsonData jsonData;
     private JsonData jsonDataDef;
     public string textReplace = "{$VAR$}";

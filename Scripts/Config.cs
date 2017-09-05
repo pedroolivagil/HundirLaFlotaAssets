@@ -7,7 +7,8 @@ public class Config{
     private Configuration config;
 
     public enum Section{
-        PlayerSettings
+        PlayerSettings,
+        System
     }
 
     public enum Key{
@@ -36,6 +37,7 @@ public class Config{
             WriteConfig(Section.PlayerSettings, Key.MusicLevel, 10);
             WriteConfig(Section.PlayerSettings, Key.ScreenWidth, 1920);
             WriteConfig(Section.PlayerSettings, Key.ScreenHeight, 1080);
+            WriteConfig(Section.System, Key.Locale, Application.systemLanguage.ToString());
             config.SaveToFile(ConfigFileName);
         }
         else{
