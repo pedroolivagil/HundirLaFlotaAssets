@@ -5,15 +5,25 @@ public class DialogConfig : MonoBehaviour{
     public Slider sliderM;
     public Slider sliderS;
     public Slider sliderD;
+    private float sliderValueS;
+    private float sliderValueM;
+    private float sliderValueD;
 
     private void Start(){
         Init();
     }
 
     public void Init(){
-        sliderS.value = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.SoundLevel);
-        sliderM.value = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.MusicLevel);
-        sliderD.value = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.Difficult);
+        sliderValueS = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.SoundLevel);
+        sliderValueM = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.MusicLevel);
+        sliderValueD = GameManager.GetConfig().ReadConfigFloat(Config.Section.PlayerSettings, Config.Key.Difficult);
+        ResetValues();
+    }
+
+    public void ResetValues(){
+        sliderS.value = sliderValueS;
+        sliderM.value = sliderValueM;
+        sliderD.value = sliderValueD;
     }
 
     public void UpdateSound(){
