@@ -22,13 +22,13 @@ public class LoginDialog : MonoBehaviour{
     }
 
     public void LoginUser(){
-        DB.GetInstance().ShowDialogConnection();
+        GameManager.ShowDialogConnection();
         StartCoroutine(Login());
     }
 
     private IEnumerator Login(){
         yield return new WaitForSeconds(0.5f);
-        WWWForm data = new WWWForm();
+        /*WWWForm data = new WWWForm();
         data.AddField("usermail", user.text);
         data.AddField("password", pass.text);
         WWW response = DB.GetInstance().Post(DB.UrlLogin, data);
@@ -58,6 +58,6 @@ public class LoginDialog : MonoBehaviour{
             }
             Debug.Log("MSJ: " + message);
             Notifier.GetInstance().SendMessage(message);
-        }
+        }*/
     }
 }

@@ -111,9 +111,27 @@ public class GameManager : MonoBehaviour{
     public static void MoveInHierarchy(GameObject gameObject){
         gameObject.transform.SetAsLastSibling();
     }
-    
-    
+
+
     public static Config GetConfig(){
         return config;
+    }
+
+    public static GameObject GetDialogConnection(){
+        Component c = GetComponentWithName("DialogConnection");
+        if (c != null){
+            return c.gameObject;
+        }
+        return null;
+    }
+
+    public static void ShowDialogConnection(){
+        GameObject dialog = GetDialogConnection();
+        ActiveDialog(dialog);
+    }
+
+    public static void HideDialogConnection(){
+        GameObject dialog = GetDialogConnection();
+        dialog.SetActive(false);
     }
 }

@@ -18,14 +18,14 @@ public class SignUpDialog : MonoBehaviour{
             Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_PWD_NOT_EQUALS"));
         }
         else{
-            DB.GetInstance().ShowDialogConnection();
-            StartCoroutine(SignUp());
+            /*DB.GetInstance().ShowDialogConnection();
+            StartCoroutine(SignUp());*/
         }
     }
 
     private IEnumerator SignUp(){
         yield return new WaitForSeconds(0.5f);
-        WWWForm data = new WWWForm();
+        /*WWWForm data = new WWWForm();
         data.AddField("username", username.text);
         data.AddField("password", pass1.text);
         data.AddField("email", email.text);
@@ -62,7 +62,7 @@ public class SignUpDialog : MonoBehaviour{
             }
             Debug.Log("MSJ: " + message);
             Notifier.GetInstance().SendMessage(message);
-        }
+        }*/
     }
 
     public IEnumerator HideDialog(){

@@ -1,70 +1,49 @@
-﻿using System.Collections.Generic;
+﻿using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using UnityEngine;
-using LitJson;
 
 public class DB : MonoBehaviour{
-    public static readonly string RESPONSE_LABEL = "response";
-    public static readonly string UrlHost = "http://localhost/HundirLaFlota3DServer/";
-    public static readonly string UrlLogin = "www/login.php";
-    public static readonly string UrlUserGame = "www/usergame.php";
-    public static readonly string UrlSignUp = "www/signup.php";
-    public static readonly string UrlRecoveryPass= "www/recovery_pass.php";
-    private static DB instance;
-    private GameObject DialogConnection;
+    private static string DB_HOST = "192.168.1.34";
+    private static string DB_USER = "admin";
+    private static string DB_PASSWORD = "oreo_20081991_Aa";
+    private static string DB_DB = "hundirFlota";
+    private static string DB_PORT = "27018";
+
+    private static DB _instance;
+    private GameObject _dialogConnection;
+
+    private MongoClient Client{ get; set; }
+    private MongoServer _server{ get; set; }
+    private MongoDatabase db;
+
+    public static readonly string URI_MONGO = "mongodb://" + DB_HOST + ":" + DB_PORT;
 
     public static DB GetInstance(){
-        init();
-        return instance;
+        Init();
+        return _instance;
     }
 
-    private static void init(){
-        if (instance == null){
-            instance = new DB();
-            DontDestroyOnLoad(instance);
+    private static void Init(){
+        if (_instance == null){
+            _instance = new DB();
+            _instance.Client = new MongoClient(URI_MONGO);
+            _instance._server = _instance.Client.GetServer();
+            _instance.db = _instance._server.GetDatabase(DB_DB);
+            foreach (string name in _instance.db.GetCollectionNames()){
+                Debug.Log("Collection: " + name);
+            }
         }
     }
 
-    public static JsonData ParseJSON(string responseText){
-        return JsonMapper.ToObject(responseText);
+    public long Count<T>(){
+        Debug.Log("Count in collection: " + typeof(T));
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        return collection.Count();
     }
 
-    public void GetDialogConnection(){
-        Component c = GameManager.GetComponentWithName("DialogConnection");
-        if (c != null){
-            DialogConnection = c.gameObject;
-        }
-    }
-
-    public WWW Get(string url){
-        WWW www = new WWW(url);
-        while (!www.isDone){ }
-        HideDialogConnection();
-        return www;
-    }
-
-    public WWW Post(string url, WWWForm form){
-        WWW www = new WWW(UrlHost + url, form);
-        while (!www.isDone){ }
-        HideDialogConnection();
-        return www;
-    }
-
-    public WWW Post(string url, Dictionary<string, string> post){
-        WWWForm form = new WWWForm();
-        foreach (var pair in post){
-            form.AddField(pair.Key, pair.Value);
-        }
-        return Post(url, form);
-    }
-
-    public void ShowDialogConnection(){
-        GetDialogConnection();
-        DialogConnection.SetActive(true);
-        GameManager.ActiveDialog(DialogConnection);
-    }
-
-    public void HideDialogConnection(){
-        GetDialogConnection();
-        DialogConnection.SetActive(false);
+    public T FindOneById<T>(IMongoQuery query){
+        Debug.Log("FindOneById in collection: " + typeof(T));
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        return collection.FindOne(query);
     }
 }

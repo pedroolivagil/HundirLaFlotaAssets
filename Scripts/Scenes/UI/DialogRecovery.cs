@@ -7,13 +7,13 @@ public class DialogRecovery : MonoBehaviour{
     public InputField email;
 
     public void RecoveryPass(){
-        DB.GetInstance().ShowDialogConnection();
-        StartCoroutine(RecoveryPassword());
+        /*DB.GetInstance().ShowDialogConnection();
+        StartCoroutine(RecoveryPassword());*/
     }
 
     private IEnumerator RecoveryPassword(){
         yield return new WaitForSeconds(.5f);
-        WWWForm data = new WWWForm();
+        /*WWWForm data = new WWWForm();
         data.AddField("email", email.text);
         WWW response = DB.GetInstance().Post(DB.UrlRecoveryPass, data);
         string responseText = response.text;
@@ -40,6 +40,6 @@ public class DialogRecovery : MonoBehaviour{
             }
             Debug.Log("MSJ: " + message);
             Notifier.GetInstance().SendMessage(message);
-        }
+        }*/
     }
 }
