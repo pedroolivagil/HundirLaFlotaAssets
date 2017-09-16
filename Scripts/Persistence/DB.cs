@@ -1,5 +1,9 @@
-﻿using MongoDB.Driver;
-using MongoDB.Driver.Builders;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using UnityEngine;
 
 public class DB : MonoBehaviour{
@@ -41,9 +45,47 @@ public class DB : MonoBehaviour{
         return collection.Count();
     }
 
-    public T FindOneById<T>(IMongoQuery query){
-        Debug.Log("FindOneById in collection: " + typeof(T));
+    public long Count<T>(IMongoQuery query){
+        Debug.Log("Count in collection: " + typeof(T));
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        return collection.Count(query);
+    }
+
+    public List<T> FindAll<T>(){
+        Debug.Log("FindAll in collection: " + typeof(T));
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        return collection.FindAll().ToList();
+    }
+
+    public List<T> FindAllByKey<T>(IMongoQuery query){
+        Debug.Log("FindAllByKey in collection: " + typeof(T));
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        return collection.Find(query).ToList();
+    }
+
+    public T FindOneByKey<T>(IMongoQuery query){
+        Debug.Log("FindOneByKey in collection: " + typeof(T));
         MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
         return collection.FindOne(query);
+    }
+
+    public bool Persist<T>(_Entity entity){
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        var retorno = collection.Insert(entity);
+        return retorno.Ok;
+    }
+
+    public bool Merge<T>(_Entity entity){
+        // var query = new QueryDocument(key.Key, key.Value.ToString());
+        // var update = MongoDB.Driver.Builders.Update<T>.Set(iQuery);
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        var retorno = collection.Save(entity);
+        return retorno.Ok;
+    }
+
+    public bool Remove<T>(IMongoQuery query){
+        MongoCollection<T> collection = _instance.db.GetCollection<T>(typeof(T).ToString());
+        var retorno = collection.Remove(query);
+        return retorno.Ok;
     }
 }

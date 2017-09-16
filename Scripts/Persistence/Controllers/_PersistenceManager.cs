@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using System;
+using System.Collections.Generic;
+using MongoDB.Driver;
 
 public class _PersistenceManager{
     private DB _db;
@@ -7,11 +9,36 @@ public class _PersistenceManager{
         _db = DB.GetInstance();
     }
 
-    public virtual long Count<T>(){
+    public long Count<T>(){
         return _db.Count<T>();
     }
 
-    public T FindById<T>(IMongoQuery query){
-        return _db.FindOneById<T>(query);
+    public long CountByKey<T>(IMongoQuery query){
+        return _db.Count<T>(query);
+    }
+
+    public List<T> FindAll<T>(){
+        return _db.FindAll<T>();
+    }
+
+    public List<T> FindAllByKey<T>(IMongoQuery query){
+        return _db.FindAllByKey<T>(query);
+    }
+
+    public T FindByKey<T>(IMongoQuery query){
+        return _db.FindOneByKey<T>(query);
+    }
+
+    public bool Persist<T>(_Entity entity){
+        entity.EntryDate = GameManager.GetCurrentTimestamp();
+        return _db.Persist<T>(entity);
+    }
+
+    public bool Merge<T>(_Entity entity){
+        return _db.Merge<T>(entity);
+    }
+
+    public bool Remove<T>(IMongoQuery query){
+        return _db.Remove<T>(query);
     }
 }

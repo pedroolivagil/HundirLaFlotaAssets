@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -133,5 +134,14 @@ public class GameManager : MonoBehaviour{
     public static void HideDialogConnection(){
         GameObject dialog = GetDialogConnection();
         dialog.SetActive(false);
+    }
+
+    public static long GetCurrentTimestamp(){
+        return (long) (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds*1000;
+    }
+
+    public static DateTime GetDateTimeFromLong(long time){
+        DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        return start.AddMilliseconds(time).ToLocalTime();
     }
 }

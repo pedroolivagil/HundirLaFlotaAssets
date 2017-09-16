@@ -5,16 +5,25 @@ using UnityEngine;
 [Serializable]
 public class User : _Entity{
     public ObjectId _id{ get; set; }
-    public long id_user{ get; set; }
-    public bool flag_active{ get; set; }
-    public bool email_activation{ get; set; } // True si el usuario tiene el email verificado
-    public long add_date{ get; set; }
-    public string username{ get; set; }
-    public string password{ get; set; }
-    public string email{ get; set; }
+    public bool FlagActive{ get; set; }
+    public long EntryDate{ get; set; }
+    public string Code{ get; set; }
 
-    public int type_user{ get; set; }
-    public UserInfo info{ get; set; } // array with user info
+    public long IdUser{ get; set; }
+    public long Birthday{ get; set; }
+    public bool AcountActive{ get; set; } // True si el usuario tiene el email verificado  
+    public int Gender{ get; set; }
+    public int TypeUser{ get; set; }
+    public string Username{ get; set; }
+    public string Password{ get; set; }
+    public string Email{ get; set; }
+    public string Firstname{ get; set; }
+    public string Lastname{ get; set; }
+    public string EmailSecurity{ get; set; }
+    public string Phone{ get; set; }
+    public string Address{ get; set; }
+    public string Country{ get; set; }
+    public string State{ get; set; }
 
     public override string ToString(){
         return JsonUtility.ToJson(this);
