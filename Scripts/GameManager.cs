@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
+using Random = System.Random;
 
 public class GameManager : MonoBehaviour{
     public static readonly string DIALOG_TAG = "Dialog";
@@ -50,8 +53,7 @@ public class GameManager : MonoBehaviour{
         if (preload){
             LoadScene.SetNavigateScene(screen);
             SceneManager.LoadScene(GameScenes.LoadScene, LoadSceneMode.Single);
-        }
-        else{
+        } else{
             SceneManager.LoadScene(screen, LoadSceneMode.Single);
         }
         Time.timeScale = 1;
@@ -95,8 +97,7 @@ public class GameManager : MonoBehaviour{
                     if (gObj.CompareTag(tag)){
                         retorno = gObj;
                     }
-                }
-                else{
+                } else{
                     retorno = gObj;
                 }
             }
@@ -137,11 +138,36 @@ public class GameManager : MonoBehaviour{
     }
 
     public static long GetCurrentTimestamp(){
-        return (long) (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds*1000;
+        return (long) (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds * 1000;
     }
 
     public static DateTime GetDateTimeFromLong(long time){
         DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         return start.AddMilliseconds(time).ToLocalTime();
+    }
+
+    public static int RandomBetween(){
+        return RandomBetween(1, 50);
+    }
+
+    public static int RandomBetween(int end){
+        return RandomBetween(1, end);
+    }
+
+    public static int RandomBetween(int start, int end){
+        Random rnd = new Random();
+        return rnd.Next(start, end + 1);
+    }
+
+    public static T ParseJsonToObject<T>(string json){
+        return JsonUtility.FromJson<T>(json);
+    }
+
+    public static string CryptString(string inputString){
+        SHA256Managed hash = new SHA256Managed();
+        byte[] signatureData = hash.ComputeHash(new UnicodeEncoding().GetBytes(inputString));
+        return Convert.ToBase64String(signatureData);
+        // For PHP read password
+        // print base64_encode(hash("sha256",mb_convert_encoding("abcdefg","UTF-16LE"),true));
     }
 }

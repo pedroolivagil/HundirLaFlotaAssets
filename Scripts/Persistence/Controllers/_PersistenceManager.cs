@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using MongoDB.Driver;
 
 public class _PersistenceManager{
@@ -29,13 +30,17 @@ public class _PersistenceManager{
         return _db.FindOneByKey<T>(query);
     }
 
-    public bool Persist<T>(_Entity entity){
-        entity.EntryDate = GameManager.GetCurrentTimestamp();
-        return _db.Persist<T>(entity);
+    public long GetLastId<T>(Expression<Func<T, long>> expression){
+        return _db.GetLastId(expression);
     }
 
     public bool Merge<T>(_Entity entity){
         return _db.Merge<T>(entity);
+    }
+
+    public bool Persist<T>(_Entity entity){
+        entity.EntryDate = GameManager.GetCurrentTimestamp();
+        return _db.Persist<T>(entity);
     }
 
     public bool Remove<T>(IMongoQuery query){

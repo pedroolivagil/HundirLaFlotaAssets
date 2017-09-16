@@ -1,8 +1,5 @@
-﻿using System;
-using MongoDB.Bson;
-using UnityEngine;
+﻿using MongoDB.Bson;
 
-[Serializable]
 public class User : _Entity{
     public ObjectId _id{ get; set; }
     public bool FlagActive{ get; set; }
@@ -11,7 +8,7 @@ public class User : _Entity{
 
     public long IdUser{ get; set; }
     public long Birthday{ get; set; }
-    public bool AcountActive{ get; set; } // True si el usuario tiene el email verificado  
+    public bool AcountActive{ get; set; }
     public int Gender{ get; set; }
     public int TypeUser{ get; set; }
     public string Username{ get; set; }
@@ -24,8 +21,4 @@ public class User : _Entity{
     public string Address{ get; set; }
     public string Country{ get; set; }
     public string State{ get; set; }
-
-    public override string ToString(){
-        return JsonUtility.ToJson(this);
-    }
 }
