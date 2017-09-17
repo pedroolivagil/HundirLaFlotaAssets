@@ -1,16 +1,21 @@
 ﻿using System.Text;
 using MongoDB.Driver.Builders;
 
-public class BankController{
+public class UserGameController{
     private _PersistenceManager pm;
 
-    public BankController(){
+    public UserGameController(){
         pm = new _PersistenceManager();
     }
 
     public User FindById(long id){
         var query = Query<User>.EQ(User => User.IdUser, id);
         return pm.FindByKey<User>(query);
+    }
+
+    public  FindByCode(string code){
+        var query = Query<>.EQ( => .Code, code);
+        return pm.FindByKey<>(query);
     }
 
     public bool Create(User user){

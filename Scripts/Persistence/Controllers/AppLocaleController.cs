@@ -1,73 +1,44 @@
-﻿using System.Text;
-using MongoDB.Driver.Builders;
+﻿using MongoDB.Driver.Builders;
 
-public class BankController{
+public class AppLocaleController{
     private _PersistenceManager pm;
 
-    public BankController(){
+    public AppLocaleController(){
         pm = new _PersistenceManager();
     }
 
-    public User FindById(long id){
-        var query = Query<User>.EQ(User => User.IdUser, id);
-        return pm.FindByKey<User>(query);
+    public AppLocale FindById(long id){
+        var query = Query<AppLocale>.EQ(AppLocale => AppLocale.IdAppLocale, id);
+        return pm.FindByKey<AppLocale>(query);
     }
 
-    public bool Create(User user){
-//        if (FindByUserName(user.Username) != null || FindByEmail(user.Email) != null){
-//            return false;
-//        }
-        user.IdUser = GenerateId();
-        user.AcountActive = false;
-        user.Code = GenerateCode(user);
-        user.Password = GameManager.CryptString(user.Password);
-        return pm.Persist<User>(user);
+    public AppLocale FindByCodeISO(string code){
+        var query = Query<AppLocale>.EQ(AppLocale => AppLocale.Code, code);
+        return pm.FindByKey<AppLocale>(query);
     }
 
-    public bool Update(User user){
-        return pm.Merge<User>(user);
+    public bool Create(AppLocale appLocale){
+        if (FindByCodeISO(appLocale.Code) != null){
+            return false;
+        }
+        appLocale.IdAppLocale = GenerateId();
+        return pm.Persist<AppLocale>(appLocale);
+    }
+
+    public bool Update(AppLocale appLocale){
+        return pm.Merge<AppLocale>(appLocale);
     }
 
     public bool Delete(long id){
-        var query = Query<User>.EQ(User => User.IdUser, id);
-        return pm.Remove<User>(query);
-    }
-
-    public string GenerateCode(User user){
-        StringBuilder code = new StringBuilder();
-        code.Append(user.Firstname.Substring(0, user.Firstname.Length < 5 ? user.Firstname.Length : 5));
-        code.Append(user.Lastname.Substring(0, user.Lastname.Length < 5 ? user.Lastname.Length : 5));
-        code.Append(GameManager.GetCurrentTimestamp());
-        return code.ToString();
-    }
-
-    public User Clone(User user){
-        User retorno = new User();
-        retorno.FlagActive = user.FlagActive;
-        retorno.EntryDate = user.EntryDate;
-        retorno.Code = user.Code;
-        retorno.Birthday = user.Birthday;
-        retorno.AcountActive = user.AcountActive; // True si el usuario tiene el email verificado  
-        retorno.Gender = user.Gender;
-        retorno.TypeUser = user.TypeUser;
-        retorno.Username = user.Username;
-        retorno.Password = user.Password;
-        retorno.Email = user.Email;
-        retorno.Firstname = user.Firstname;
-        retorno.Lastname = user.Lastname;
-        retorno.EmailSecurity = user.EmailSecurity;
-        retorno.Phone = user.Phone;
-        retorno.Address = user.Address;
-        retorno.Country = user.Country;
-        retorno.State = user.State;
-        return retorno;
+        var query = Query<AppLocale>.EQ(AppLocale => AppLocale.IdAppLocale, id);
+        return pm.Remove<AppLocale>(query);
     }
 
     private long GetLastId(){
-        return pm.GetLastId<User>(User => User.IdUser);
+        return pm.GetLastId<AppLocale>(AppLocale => AppLocale.IdAppLocale);
     }
 
-    private long GenerateId(){
-        return GetLastId() + GameManager.RandomBetween();
+    private int GenerateId(){
+        return (int) GetLastId() + GameManager.RandomBetween();
     }
 }

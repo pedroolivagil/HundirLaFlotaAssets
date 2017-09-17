@@ -6,6 +6,7 @@ public class AppText : _Entity{
     public long EntryDate{ get; set; }
     public string Code{ get; set; }
 
+    public long IdAppText{ get; set; }
     public string Text{ get; set; }
     public int IdIdioma{ get; set; }
 }

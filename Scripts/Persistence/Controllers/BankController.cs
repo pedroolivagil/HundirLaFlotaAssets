@@ -8,63 +8,66 @@ public class BankController{
         pm = new _PersistenceManager();
     }
 
-    public User FindById(long id){
-        var query = Query<User>.EQ(User => User.IdUser, id);
-        return pm.FindByKey<User>(query);
+    public Bank FindById(long id){
+        var query = Query<Bank>.EQ(Bank => Bank.IdBank, id);
+        return pm.FindByKey<Bank>(query);
     }
 
-    public bool Create(User user){
-//        if (FindByUserName(user.Username) != null || FindByEmail(user.Email) != null){
-//            return false;
-//        }
-        user.IdUser = GenerateId();
-        user.AcountActive = false;
-        user.Code = GenerateCode(user);
-        user.Password = GameManager.CryptString(user.Password);
-        return pm.Persist<User>(user);
+    public Bank FindByCode(string code){
+        var query = Query<Bank>.EQ(Bank => Bank.Code, code);
+        return pm.FindByKey<Bank>(query);
     }
 
-    public bool Update(User user){
-        return pm.Merge<User>(user);
+    public bool Create(Bank bank){
+        if (FindByCode(bank.Code) != null){
+            return false;
+        }
+        bank.IdBank = GenerateId();
+        bank.Code = GenerateCode(bank);
+        return pm.Persist<Bank>(bank);
+    }
+
+    public bool Update(Bank bank){
+        return pm.Merge<Bank>(bank);
     }
 
     public bool Delete(long id){
-        var query = Query<User>.EQ(User => User.IdUser, id);
-        return pm.Remove<User>(query);
+        var query = Query<Bank>.EQ(Bank => Bank.IdBank, id);
+        return pm.Remove<Bank>(query);
     }
 
-    public string GenerateCode(User user){
+    public string GenerateCode(Bank bank){
         StringBuilder code = new StringBuilder();
-        code.Append(user.Firstname.Substring(0, user.Firstname.Length < 5 ? user.Firstname.Length : 5));
-        code.Append(user.Lastname.Substring(0, user.Lastname.Length < 5 ? user.Lastname.Length : 5));
+        code.Append(bank.Firstname.Substring(0, bank.Firstname.Length < 5 ? bank.Firstname.Length : 5));
+        code.Append(bank.Lastname.Substring(0, bank.Lastname.Length < 5 ? bank.Lastname.Length : 5));
         code.Append(GameManager.GetCurrentTimestamp());
         return code.ToString();
     }
 
-    public User Clone(User user){
-        User retorno = new User();
-        retorno.FlagActive = user.FlagActive;
-        retorno.EntryDate = user.EntryDate;
-        retorno.Code = user.Code;
-        retorno.Birthday = user.Birthday;
-        retorno.AcountActive = user.AcountActive; // True si el usuario tiene el email verificado  
-        retorno.Gender = user.Gender;
-        retorno.TypeUser = user.TypeUser;
-        retorno.Username = user.Username;
-        retorno.Password = user.Password;
-        retorno.Email = user.Email;
-        retorno.Firstname = user.Firstname;
-        retorno.Lastname = user.Lastname;
-        retorno.EmailSecurity = user.EmailSecurity;
-        retorno.Phone = user.Phone;
-        retorno.Address = user.Address;
-        retorno.Country = user.Country;
-        retorno.State = user.State;
+    public Bank Clone(Bank bank){
+        Bank retorno = new Bank();
+        retorno.FlagActive = bank.FlagActive;
+        retorno.EntryDate = bank.EntryDate;
+        retorno.Code = bank.Code;
+        retorno.Birthday = bank.Birthday;
+        retorno.AcountActive = bank.AcountActive; // True si el usuario tiene el email verificado  
+        retorno.Gender = bank.Gender;
+        retorno.TypeBank = bank.TypeBank;
+        retorno.Bankname = bank.Bankname;
+        retorno.Password = bank.Password;
+        retorno.Email = bank.Email;
+        retorno.Firstname = bank.Firstname;
+        retorno.Lastname = bank.Lastname;
+        retorno.EmailSecurity = bank.EmailSecurity;
+        retorno.Phone = bank.Phone;
+        retorno.Address = bank.Address;
+        retorno.Country = bank.Country;
+        retorno.State = bank.State;
         return retorno;
     }
 
     private long GetLastId(){
-        return pm.GetLastId<User>(User => User.IdUser);
+        return pm.GetLastId<Bank>(Bank => Bank.IdBank);
     }
 
     private long GenerateId(){
