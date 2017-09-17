@@ -23,11 +23,25 @@ public class LoginDialog : MonoBehaviour{
 
     public void LoginUser(){
         GameManager.ShowDialogConnection();
-        StartCoroutine(Login());
+        Login();
     }
 
-    private IEnumerator Login(){
-        yield return new WaitForSeconds(0.5f);
+    private void Login(){
+        if (GameManager.IsNull(user.text) || GameManager.IsNull(pass.text)){
+            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_FORM_EMPTY"));
+        } else{
+            User u = MapControllers.GetInstance().UserController.CheckLogin(user.text, pass.text);
+            if (GameManager.IsNotNull(u)){
+                Notifier.GetInstance().SendMessage("El usuario existe y se ha hecho login");
+                GameManager.GetConfig().WriteConfig(Config.Section.User, Config.Key.ID, u.IdUser);
+                GameManager.ChangeScreen(GameScenes.SinglePlayerBattleSelector, true);
+            } else{
+                Notifier.GetInstance().SendMessage("Error de login");
+            }
+        }
+        // WriteConfig(Section.User, Key.ID, 0);
+        // WriteConfig(Section.User, Key.AutoLogin, 0);
+
         /*WWWForm data = new WWWForm();
         data.AddField("usermail", user.text);
         data.AddField("password", pass.text);
@@ -59,5 +73,6 @@ public class LoginDialog : MonoBehaviour{
             Debug.Log("MSJ: " + message);
             Notifier.GetInstance().SendMessage(message);
         }*/
+        GameManager.HideDialogConnection();
     }
 }

@@ -10,20 +10,16 @@ using Random = System.Random;
 
 public class GameManager : MonoBehaviour{
     public static readonly string DIALOG_TAG = "Dialog";
-    public static readonly int SINGLE_PLAYER = 0;
-    public static readonly int MULTI_PLAYER = 1;
     public int screenWidth = 1920;
     public int screenHeigth = 1080;
     private static int gameMode;
     private static List<Resolution> listResolution;
     private static Config config;
+    private static User _userGame;
 
-    public class ResponseCode{
-        public static readonly int CODE_000 = 0;
-        public static readonly int CODE_100 = 100;
-        public static readonly int CODE_200 = 200;
-        public static readonly int CODE_400 = 400;
-        public static readonly int CODE_404 = 404;
+    public static User userGame{
+        get{ return _userGame; }
+        set{ _userGame = value; }
     }
 
     // Use this for initialization
@@ -40,6 +36,28 @@ public class GameManager : MonoBehaviour{
                 }
             }
         }
+    }
+
+    public List<Resolution> GetListResolution(){
+        return listResolution;
+    }
+
+    public void SetResolutionGame(Resolution resolution){
+        Debug.Log("Resolution has been changed: " + resolution.width + "x" + resolution.height);
+        Screen.SetResolution(resolution.width, resolution.height, true, resolution.refreshRate);
+        Screen.fullScreen = true;
+    }
+
+    public void ToogleFullScreen(){
+        Screen.fullScreen = !Screen.fullScreen;
+    }
+
+    public static bool IsNull(object obj){
+        return obj == null || obj.Equals("");
+    }
+
+    public static bool IsNotNull(object obj){
+        return !IsNull(obj);
     }
 
     public static IEnumerator ExitGame(float time){
@@ -63,20 +81,6 @@ public class GameManager : MonoBehaviour{
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
         Time.timeScale = 1;
-    }
-
-    public List<Resolution> GetListResolution(){
-        return listResolution;
-    }
-
-    public void SetResolutionGame(Resolution resolution){
-        Debug.Log("Resolution has been changed: " + resolution.width + "x" + resolution.height);
-        Screen.SetResolution(resolution.width, resolution.height, true, resolution.refreshRate);
-        Screen.fullScreen = true;
-    }
-
-    public void ToogleFullScreen(){
-        Screen.fullScreen = !Screen.fullScreen;
     }
 
     public static bool ArrayContains(Object[] array, Object item){

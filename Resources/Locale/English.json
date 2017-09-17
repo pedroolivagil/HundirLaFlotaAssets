@@ -62,5 +62,6 @@
     "ERROR_UNABLE_TO_CONNECT_SERVER": "Fail to connect server.",
     "ERROR_TIMEOUT": "Timeout. Please, try again.",
     "ERROR_PWD_NOT_EQUALS": "Passwords are not the same",
-    "ERROR_ACCEPT_TERMS": "You should accept the terms and conditions"
+    "ERROR_ACCEPT_TERMS": "You should accept the terms and conditions",
+    "ERROR_FORM_LOGIN_EMPTY": "Form fields are required."
 }

@@ -8,7 +8,8 @@ public class Config{
 
     public enum Section{
         PlayerSettings,
-        System
+        System,
+        User
     }
 
     public enum Key{
@@ -18,7 +19,9 @@ public class Config{
         Level,
         Difficult,
         SoundLevel,
-        MusicLevel
+        MusicLevel,
+        ID,
+        AutoLogin
     }
 
     public Configuration GetConfig(){
@@ -31,6 +34,8 @@ public class Config{
                 sw.WriteLine("");
             }
             config = Configuration.LoadFromFile(ConfigFileName);
+            WriteConfig(Section.User, Key.ID, 0);
+            WriteConfig(Section.User, Key.AutoLogin, 0);
             WriteConfig(Section.PlayerSettings, Key.Level, 1);
             WriteConfig(Section.PlayerSettings, Key.Difficult, 1);
             WriteConfig(Section.PlayerSettings, Key.SoundLevel, 10);
@@ -39,8 +44,7 @@ public class Config{
             WriteConfig(Section.PlayerSettings, Key.ScreenHeight, 1080);
             WriteConfig(Section.System, Key.Locale, Application.systemLanguage.ToString());
             config.SaveToFile(ConfigFileName);
-        }
-        else{
+        } else{
             config = Configuration.LoadFromFile(ConfigFileName);
         }
     }

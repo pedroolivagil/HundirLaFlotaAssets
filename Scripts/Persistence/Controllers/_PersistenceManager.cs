@@ -40,6 +40,7 @@ public class _PersistenceManager{
 
     public bool Persist<T>(_Entity entity){
         entity.EntryDate = GameManager.GetCurrentTimestamp();
+        entity.FlagActive = true;
         return _db.Persist<T>(entity);
     }
 
