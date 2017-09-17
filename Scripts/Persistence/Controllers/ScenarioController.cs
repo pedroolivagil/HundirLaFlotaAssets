@@ -1,10 +1,10 @@
 ﻿using System.Text;
 using MongoDB.Driver.Builders;
 
-public class UserController{
+public class BankController{
     private _PersistenceManager pm;
 
-    public UserController(){
+    public BankController(){
         pm = new _PersistenceManager();
     }
 
@@ -13,34 +13,10 @@ public class UserController{
         return pm.FindByKey<User>(query);
     }
 
-    public User FindByUserName(string username){
-        var query = Query<User>.EQ(User => User.Username, username);
-        return pm.FindByKey<User>(query);
-    }
-
-    public User FindByEmail(string email){
-        var query = Query<User>.EQ(User => User.Email, email);
-        return pm.FindByKey<User>(query);
-    }
-
-    public User CheckLogin(string usernameOrEmail, string password){
-        User user = FindByUserName(usernameOrEmail);
-        if (user == null){
-            user = FindByEmail(usernameOrEmail);
-        }
-        if (user == null){
-            return null;
-        }
-        if (user.Password.Equals(GameManager.CryptString(password))){
-            return user;
-        }
-        return null;
-    }
-
     public bool Create(User user){
-        if (FindByUserName(user.Username) != null || FindByEmail(user.Email) != null){
-            return false;
-        }
+//        if (FindByUserName(user.Username) != null || FindByEmail(user.Email) != null){
+//            return false;
+//        }
         user.IdUser = GenerateId();
         user.AcountActive = false;
         user.Code = GenerateCode(user);
