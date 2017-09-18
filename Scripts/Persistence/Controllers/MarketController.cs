@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver.Builders;
+﻿using System.Text;
+using MongoDB.Driver.Builders;
 
 public class MarketController{
     private _PersistenceManager pm;
