@@ -1,5 +1,4 @@
-﻿using System.Text;
-using MongoDB.Driver.Builders;
+﻿using MongoDB.Driver.Builders;
 
 public class BattleController{
     private _PersistenceManager pm;

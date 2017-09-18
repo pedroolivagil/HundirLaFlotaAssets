@@ -12,13 +12,13 @@ public class AppLocaleController{
         return pm.FindByKey<AppLocale>(query);
     }
 
-    public AppLocale FindByCodeISO(string code){
+    public AppLocale FindByCodeIso(string code){
         var query = Query<AppLocale>.EQ(AppLocale => AppLocale.Code, code);
         return pm.FindByKey<AppLocale>(query);
     }
 
     public bool Create(AppLocale appLocale){
-        if (FindByCodeISO(appLocale.Code) != null){
+        if (FindByCodeIso(appLocale.Code) != null){
             return false;
         }
         appLocale.IdAppLocale = GenerateId();

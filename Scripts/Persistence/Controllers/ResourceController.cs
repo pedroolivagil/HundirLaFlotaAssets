@@ -1,5 +1,4 @@
-﻿using System.Text;
-using MongoDB.Driver.Builders;
+﻿using MongoDB.Driver.Builders;
 
 public class ResourceController{
     private _PersistenceManager pm;
@@ -8,71 +7,38 @@ public class ResourceController{
         pm = new _PersistenceManager();
     }
 
-    public User FindById(long id){
-        var query = Query<User>.EQ(User => User.IdUser, id);
-        return pm.FindByKey<User>(query);
+    public Resource FindById(long id){
+        var query = Query<Resource>.EQ(Resource => Resource.IdResource, id);
+        return pm.FindByKey<Resource>(query);
     }
 
-    public  FindByCode(string code){
-        var query = Query<>.EQ( => .Code, code);
-        return pm.FindByKey<>(query);
+    public Resource FindByCode(string code){
+        var query = Query<Resource>.EQ(Resource => Resource.Code, code);
+        return pm.FindByKey<Resource>(query);
     }
 
-    public bool Create(User user){
-//        if (FindByUserName(user.Username) != null || FindByEmail(user.Email) != null){
-//            return false;
-//        }
-        user.IdUser = GenerateId();
-        user.AcountActive = false;
-        user.Code = GenerateCode(user);
-        user.Password = GameManager.CryptString(user.Password);
-        return pm.Persist<User>(user);
+    public bool Create(Resource resource){
+        if (FindByCode(resource.Code) != null){
+            return false;
+        }
+        resource.IdResource = GenerateId();
+        return pm.Persist<Resource>(resource);
     }
 
-    public bool Update(User user){
-        return pm.Merge<User>(user);
+    public bool Update(Resource resource){
+        return pm.Merge<Resource>(resource);
     }
 
     public bool Delete(long id){
-        var query = Query<User>.EQ(User => User.IdUser, id);
-        return pm.Remove<User>(query);
-    }
-
-    public string GenerateCode(User user){
-        StringBuilder code = new StringBuilder();
-        code.Append(user.Firstname.Substring(0, user.Firstname.Length < 5 ? user.Firstname.Length : 5));
-        code.Append(user.Lastname.Substring(0, user.Lastname.Length < 5 ? user.Lastname.Length : 5));
-        code.Append(GameManager.GetCurrentTimestamp());
-        return code.ToString();
-    }
-
-    public User Clone(User user){
-        User retorno = new User();
-        retorno.FlagActive = user.FlagActive;
-        retorno.EntryDate = user.EntryDate;
-        retorno.Code = user.Code;
-        retorno.Birthday = user.Birthday;
-        retorno.AcountActive = user.AcountActive; // True si el usuario tiene el email verificado  
-        retorno.Gender = user.Gender;
-        retorno.TypeUser = user.TypeUser;
-        retorno.Username = user.Username;
-        retorno.Password = user.Password;
-        retorno.Email = user.Email;
-        retorno.Firstname = user.Firstname;
-        retorno.Lastname = user.Lastname;
-        retorno.EmailSecurity = user.EmailSecurity;
-        retorno.Phone = user.Phone;
-        retorno.Address = user.Address;
-        retorno.Country = user.Country;
-        retorno.State = user.State;
-        return retorno;
+        var query = Query<Resource>.EQ(Resource => Resource.IdResource, id);
+        return pm.Remove<Resource>(query);
     }
 
     private long GetLastId(){
-        return pm.GetLastId<User>(User => User.IdUser);
+        return pm.GetLastId<Resource>(Resource => Resource.IdResource);
     }
 
-    private long GenerateId(){
-        return GetLastId() + GameManager.RandomBetween();
+    private int GenerateId(){
+        return (int) GetLastId() + GameManager.RandomBetween();
     }
 }
