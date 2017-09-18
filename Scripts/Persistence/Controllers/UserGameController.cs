@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver.Builders;
+﻿using System.Text;
+using MongoDB.Driver.Builders;
 
 public class UserGameGameController{
     private _PersistenceManager pm;
@@ -22,6 +23,7 @@ public class UserGameGameController{
             return false;
         }
         userGame.IdUserGame = GenerateId();
+        userGame.Code = GenerateCode();
         return pm.Persist<UserGame>(userGame);
     }
 
@@ -32,6 +34,13 @@ public class UserGameGameController{
     public bool Delete(long id){
         var query = Query<UserGame>.EQ(UserGame => UserGame.IdUserGame, id);
         return pm.Remove<UserGame>(query);
+    }
+
+    public string GenerateCode(){
+        StringBuilder code = new StringBuilder();
+        code.Append(System.Guid.NewGuid());
+        code.Append(GameManager.GetCurrentTimestamp());
+        return code.ToString();
     }
 
     private long GetLastId(){

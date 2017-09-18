@@ -22,6 +22,7 @@ public class MarketController{
             return false;
         }
         market.IdMarket = GenerateId();
+        market.Code = GenerateCode();
         return pm.Persist<Market>(market);
     }
 
@@ -32,6 +33,13 @@ public class MarketController{
     public bool Delete(long id){
         var query = Query<Market>.EQ(Market => Market.IdMarket, id);
         return pm.Remove<Market>(query);
+    }
+
+    public string GenerateCode(){
+        StringBuilder code = new StringBuilder();
+        code.Append(System.Guid.NewGuid());
+        code.Append(GameManager.GetCurrentTimestamp());
+        return code.ToString();
     }
 
     private long GetLastId(){

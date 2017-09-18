@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver.Builders;
+﻿using System.Text;
+using MongoDB.Driver.Builders;
 
 public class BankController{
     private _PersistenceManager pm;
@@ -22,6 +23,7 @@ public class BankController{
             return false;
         }
         bank.IdBank = GenerateId();
+        bank.Code = GenerateCode();
         return pm.Persist<Bank>(bank);
     }
 
@@ -33,6 +35,14 @@ public class BankController{
         var query = Query<Bank>.EQ(Bank => Bank.IdBank, id);
         return pm.Remove<Bank>(query);
     }
+
+    public string GenerateCode(){
+        StringBuilder code = new StringBuilder();
+        code.Append(System.Guid.NewGuid());
+        code.Append(GameManager.GetCurrentTimestamp());
+        return code.ToString();
+    }
+
 
     private long GetLastId(){
         return pm.GetLastId<Bank>(Bank => Bank.IdBank);

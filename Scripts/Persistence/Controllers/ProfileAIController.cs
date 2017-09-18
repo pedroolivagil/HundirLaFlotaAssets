@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver.Builders;
+﻿using System.Text;
+using MongoDB.Driver.Builders;
 
 public class ProfileAIController{
     private _PersistenceManager pm;
@@ -22,6 +23,7 @@ public class ProfileAIController{
             return false;
         }
         profileAi.IdProfileAi = GenerateId();
+        profileAi.Code = GenerateCode();
         return pm.Persist<ProfileAI>(profileAi);
     }
 
@@ -34,6 +36,12 @@ public class ProfileAIController{
         return pm.Remove<ProfileAI>(query);
     }
 
+    public string GenerateCode(){
+        StringBuilder code = new StringBuilder();
+        code.Append(System.Guid.NewGuid());
+        code.Append(GameManager.GetCurrentTimestamp());
+        return code.ToString();
+    }
 
     private long GetLastId(){
         return pm.GetLastId<ProfileAI>(ProfileAI => ProfileAI.IdProfileAi);

@@ -35,10 +35,12 @@ public class _PersistenceManager{
     }
 
     public bool Merge<T>(_Entity entity){
+        entity.Code = entity.Code.ToUpper();
         return _db.Merge<T>(entity);
     }
 
     public bool Persist<T>(_Entity entity){
+        entity.Code = entity.Code.ToUpper();
         entity.EntryDate = GameManager.GetCurrentTimestamp();
         entity.FlagActive = true;
         return _db.Persist<T>(entity);

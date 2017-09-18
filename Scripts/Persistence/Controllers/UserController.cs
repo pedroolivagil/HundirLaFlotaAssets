@@ -65,28 +65,6 @@ public class UserController{
         return code.ToString();
     }
 
-    public User Clone(User user){
-        User retorno = new User();
-        retorno.FlagActive = user.FlagActive;
-        retorno.EntryDate = user.EntryDate;
-        retorno.Code = user.Code;
-        retorno.Birthday = user.Birthday;
-        retorno.AcountActive = user.AcountActive; // True si el usuario tiene el email verificado  
-        retorno.Gender = user.Gender;
-        retorno.TypeUser = user.TypeUser;
-        retorno.Username = user.Username;
-        retorno.Password = user.Password;
-        retorno.Email = user.Email;
-        retorno.Firstname = user.Firstname;
-        retorno.Lastname = user.Lastname;
-        retorno.EmailSecurity = user.EmailSecurity;
-        retorno.Phone = user.Phone;
-        retorno.Address = user.Address;
-        retorno.Country = user.Country;
-        retorno.State = user.State;
-        return retorno;
-    }
-
     private long GetLastId(){
         return pm.GetLastId<User>(User => User.IdUser);
     }
