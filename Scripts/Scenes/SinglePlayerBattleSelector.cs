@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SinglePlayerBattleSelector : MonoBehaviour{
@@ -8,6 +9,6 @@ public class SinglePlayerBattleSelector : MonoBehaviour{
     void Start(){
         User user = MapControllers.GetInstance().UserController.FindByUserName("Insert");
         Debug.Log(user.Firstname);
-        Debug.Log("GUID: " + System.Guid.NewGuid());
+        Debug.Log("GUID: " + Guid.NewGuid());
     }
 }

@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine.Networking;
-
-public class MapControllers{
+﻿public class MapControllers{
     private static MapControllers _instance;
     public AppLocaleController AppLocaleController{ get; private set; }
     public AppTextController AppTextController{ get; private set; }

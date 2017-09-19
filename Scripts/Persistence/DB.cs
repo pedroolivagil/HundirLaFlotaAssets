@@ -20,7 +20,9 @@ public class DB{
     private MongoServer Server{ get; set; }
     private MongoDatabase _db;
 
-    public static readonly string URI_MONGO = "mongodb://" + DB_HOST + ":" + DB_PORT;
+    public static readonly string URI_MONGO =
+        "mongodb://" + DB_USER + ":" + DB_PASSWORD + "@" + DB_HOST + ":" + DB_PORT + "/" + DB_DB;
+//    public static readonly string URI_MONGO = "mongodb://" + DB_HOST + ":" + DB_PORT;
 
     public static DB GetInstance(){
         Init();
@@ -30,7 +32,7 @@ public class DB{
     private static void Init(){
         if (_instance == null){
             _instance = new DB();
-            _instance.Client = new MongoClient(URI_MONGO);
+            _instance.Client = new MongoClient(new MongoUrl(URI_MONGO));
             _instance.Server = _instance.Client.GetServer();
             _instance._db = _instance.Server.GetDatabase(DB_DB);
         }
