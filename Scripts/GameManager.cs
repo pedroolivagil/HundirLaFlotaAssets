@@ -174,4 +174,16 @@ public class GameManager : MonoBehaviour{
         // For PHP read password
         // print base64_encode(hash("sha256",mb_convert_encoding("abcdefg","UTF-16LE"),true));
     }
+
+    public static Texture2D ConvertBase64ToTexture2D(string base64){
+        Texture2D retorno = null;
+        if (IsNotNull(base64)){
+            byte[] arr = Convert.FromBase64String(base64);
+            Texture2D mapTexture = new Texture2D(1, 1);
+            mapTexture.LoadImage(arr);
+            mapTexture.Apply();
+            retorno = mapTexture;
+        }
+        return retorno;
+    }
 }
