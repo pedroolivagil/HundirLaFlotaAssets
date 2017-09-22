@@ -1,5 +1,5 @@
-﻿public class MapControllers{
-    private static MapControllers _instance;
+﻿public class DbMngr{
+    private static DbMngr _instance;
     public AppLocaleController AppLocaleController{ get; private set; }
     public AppTextController AppTextController{ get; private set; }
     public BankController BankController{ get; private set; }
@@ -17,7 +17,7 @@
     public VesselController VesselController{ get; private set; }
     public WeaponController WeaponController{ get; private set; }
 
-    public MapControllers(){
+    public DbMngr(){
         UserController = new UserController();
         AppLocaleController = new AppLocaleController();
         AppTextController = new AppTextController();
@@ -36,9 +36,9 @@
         WeaponController = new WeaponController();
     }
 
-    public static MapControllers GetInstance(){
+    public static DbMngr Inst(){
         if (_instance == null){
-            _instance = new MapControllers();
+            _instance = new DbMngr();
         }
         return _instance;
     }

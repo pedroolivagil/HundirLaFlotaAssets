@@ -7,7 +7,7 @@ public class DialogRecovery : MonoBehaviour{
     public InputField email;
 
     public void RecoveryPass(){
-        /*DB.GetInstance().ShowDialogConnection();
+        /*DB.Inst().ShowDialogConnection();
         StartCoroutine(RecoveryPassword());*/
     }
 
@@ -15,7 +15,7 @@ public class DialogRecovery : MonoBehaviour{
         yield return new WaitForSeconds(.5f);
         /*WWWForm data = new WWWForm();
         data.AddField("email", email.text);
-        WWW response = DB.GetInstance().Post(DB.UrlRecoveryPass, data);
+        WWW response = DB.Inst().Post(DB.UrlRecoveryPass, data);
         string responseText = response.text;
         if (responseText != null){
             email.interactable = false;
@@ -28,18 +28,18 @@ public class DialogRecovery : MonoBehaviour{
                 email.text = null;
                 if (responseCode == GameManager.ResponseCode.CODE_404){
                     Debug.Log("Conection Fail");
-                    message = LocaleManager.GetInstance().TranslateStr("ERROR_USER_NOT_EXIST");
+                    message = LocaleManager.Inst().TranslateStr("ERROR_USER_NOT_EXIST");
                 }
                 else{
                     Debug.Log("FAIL TO CONNECT SERVER");
-                    message = LocaleManager.GetInstance().TranslateStr("ERROR_UNABLE_TO_CONNECT_SERVER");
+                    message = LocaleManager.Inst().TranslateStr("ERROR_UNABLE_TO_CONNECT_SERVER");
                 }
             }
             else{
-                message = LocaleManager.GetInstance().TranslateStr(responseJson["message"].ToString());
+                message = LocaleManager.Inst().TranslateStr(responseJson["message"].ToString());
             }
             Debug.Log("MSJ: " + message);
-            Notifier.GetInstance().SendMessage(message);
+            Notifier.Inst().SendMessage(message);
         }*/
     }
 }

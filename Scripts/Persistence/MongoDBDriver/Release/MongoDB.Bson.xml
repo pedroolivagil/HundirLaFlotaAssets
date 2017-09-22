@@ -8349,7 +8349,7 @@
             Gets an instance of BsonBinaryDataGuidGenerator for Unspecifed GuidRepresentation.
             </summary>
         </member>
-        <member name="M:MongoDB.Bson.Serialization.IdGenerators.BsonBinaryDataGuidGenerator.GetInstance(MongoDB.Bson.GuidRepresentation)">
+        <member name="M:MongoDB.Bson.Serialization.IdGenerators.BsonBinaryDataGuidGenerator.Inst(MongoDB.Bson.GuidRepresentation)">
             <summary>
             Gets the instance of BsonBinaryDataGuidGenerator for a GuidRepresentation.
             </summary>

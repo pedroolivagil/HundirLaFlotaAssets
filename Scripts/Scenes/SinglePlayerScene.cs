@@ -1,18 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SinglePlayerScene : MonoBehaviour{
+public class SinglePlayerScene : ScenesGame{
     public string DialogConfig = "DialogConfig";
-
-    private GameObject[] Dialogs;
 
     // Use this for initialization
     void Start(){
-        Dialogs = GameObject.FindGameObjectsWithTag(GameManager.DIALOG_TAG);
-        foreach (GameObject dialog in Dialogs){
-            dialog.SetActive(false);
-        }
+        HideDialogsStart();
     }
 
     public void ButtonConfig(){

@@ -30,7 +30,7 @@ public class LoginDialog : MonoBehaviour{
         if (GameManager.IsNull(user.text) || GameManager.IsNull(pass.text)){
             Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_FORM_EMPTY"));
         } else{
-            User u = MapControllers.GetInstance().UserController.CheckLogin(user.text, pass.text);
+            User u = DbMngr.Inst().UserController.CheckLogin(user.text, pass.text);
             if (GameManager.IsNotNull(u)){
                 GameManager.userGame = u;
                 GameManager.GetConfig().WriteConfig(Config.Section.User, Config.Key.ID, u.IdUser);

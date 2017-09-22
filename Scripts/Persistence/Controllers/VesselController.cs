@@ -34,7 +34,7 @@ public class VesselController{
         return pm.Remove<Vessel>(query);
     }
 
-    private long GetLastId(){
+    public long GetLastId(){
         return pm.GetLastId<Vessel>(Vessel => Vessel.IdVessel);
     }
 

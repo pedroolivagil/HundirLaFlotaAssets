@@ -24,7 +24,7 @@ public class DB{
         "mongodb://" + DB_USER + ":" + DB_PASSWORD + "@" + DB_HOST + ":" + DB_PORT + "/" + DB_DB;
 //    public static readonly string URI_MONGO = "mongodb://" + DB_HOST + ":" + DB_PORT;
 
-    public static DB GetInstance(){
+    public static DB Inst(){
         Init();
         return _instance;
     }
@@ -37,6 +37,38 @@ public class DB{
             _instance._db = _instance.Server.GetDatabase(DB_DB);
         }
     }
+
+// TODO: Borrar al compilar el juego
+    public bool NewCollection(string collectionName){
+        bool retorno = false;
+        if (!_instance._db.CollectionExists(collectionName)){
+            var create = _instance._db.CreateCollection(collectionName);
+            retorno = create.Ok;
+        }
+        Debug.Log("Collection '" + collectionName + "' created: " + retorno);
+        return retorno;
+    }
+
+    public bool RemoveCollection(string collectionName){
+        bool retorno = false;
+        if (_instance._db.CollectionExists(collectionName)){
+            var drop = _instance._db.DropCollection(collectionName);
+            retorno = drop.Ok;
+        }
+        Debug.Log("Collection '" + collectionName + "' deleted: " + retorno);
+        return retorno;
+    }
+
+    public bool RenameCollection(string oldName, string newName){
+        bool retorno = false;
+        if (_instance._db.CollectionExists(oldName)){
+            var rename = _instance._db.RenameCollection(oldName, newName);
+            retorno = rename.Ok;
+        }
+        Debug.Log("Collection '" + oldName + "' renamed to '" + newName + "': " + retorno);
+        return retorno;
+    }
+// TODO: Borrar al compilar el juego
 
     public long Count<T>(){
         Debug.Log("Count in collection: " + typeof(T));
@@ -90,8 +122,14 @@ public class DB{
     }
 
     public long GetLastId<T>(Expression<Func<T, long>> expression){
-        Debug.Log("GetLastId in collection: " + typeof(T));
-        MongoCollection<T> collection = _instance._db.GetCollection<T>(typeof(T).ToString());
-        return collection.AsQueryable().Max(expression);
+        long result = 1;
+        try{
+            Debug.Log("GetLastId in collection: " + typeof(T));
+            MongoCollection<T> collection = _instance._db.GetCollection<T>(typeof(T).ToString());
+            result = collection.AsQueryable().Max(expression);
+        } catch (Exception e){
+            // ignored
+        }
+        return result;
     }
 }

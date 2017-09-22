@@ -14,7 +14,7 @@ public class ResourceController{
     }
 
     public Resource FindByCode(string code){
-        var query = Query<Resource>.EQ(Resource => Resource.Code, code);
+        var query = Query<Resource>.EQ(Resource => Resource.Code, code.ToUpper());
         return pm.FindByKey<Resource>(query);
     }
 

@@ -18,7 +18,7 @@ public class SignUpDialog : MonoBehaviour{
             Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_PWD_NOT_EQUALS"));
         }
         else{
-            /*DB.GetInstance().ShowDialogConnection();
+            /*DB.Inst().ShowDialogConnection();
             StartCoroutine(SignUp());*/
         }
     }
@@ -29,7 +29,7 @@ public class SignUpDialog : MonoBehaviour{
         data.AddField("username", username.text);
         data.AddField("password", pass1.text);
         data.AddField("email", email.text);
-        WWW response = DB.GetInstance().Post(DB.UrlSignUp, data);
+        WWW response = DB.Inst().Post(DB.UrlSignUp, data);
 
         string responseText = response.text;
         if (responseText != null){
@@ -49,19 +49,19 @@ public class SignUpDialog : MonoBehaviour{
                 pass2.text = null;
                 if (responseCode == GameManager.ResponseCode.CODE_404){
                     Debug.Log("Conection Fail");
-                    message = LocaleManager.GetInstance().TranslateStr(responseJson["message"].ToString());
+                    message = LocaleManager.Inst().TranslateStr(responseJson["message"].ToString());
                 }
                 else{
                     Debug.Log("FAIL TO CONNECT SERVER");
-                    message = LocaleManager.GetInstance().TranslateStr("ERROR_UNABLE_TO_CONNECT_SERVER");
+                    message = LocaleManager.Inst().TranslateStr("ERROR_UNABLE_TO_CONNECT_SERVER");
                 }
             }
             else{
-                message = LocaleManager.GetInstance().TranslateStr("INFO_NEW_USER");
+                message = LocaleManager.Inst().TranslateStr("INFO_NEW_USER");
                 StartCoroutine(HideDialog());
             }
             Debug.Log("MSJ: " + message);
-            Notifier.GetInstance().SendMessage(message);
+            Notifier.Inst().SendMessage(message);
         }*/
     }
 

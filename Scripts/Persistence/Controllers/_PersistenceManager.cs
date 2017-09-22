@@ -7,7 +7,7 @@ public class _PersistenceManager{
     private DB _db;
 
     public _PersistenceManager(){
-        _db = DB.GetInstance();
+        _db = DB.Inst();
     }
 
     public long Count<T>(){
