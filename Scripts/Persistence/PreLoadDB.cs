@@ -23,6 +23,8 @@ public class PreLoadDb{
     private readonly string _tableAppText = "AppText";
     private readonly string _tableAppLocale = "AppLocale";
     private readonly string _tablePuerto = "Puerto";
+    private readonly string _tableQuest = "Quest";
+    private readonly string _tableReward = "Reward";
 
     public static PreLoadDb Inst(){
         if (_instance == null){
@@ -43,7 +45,9 @@ public class PreLoadDb{
         DB.Inst().RemoveCollection(_tablePowerup);
         DB.Inst().RemoveCollection(_tableProfileAi);
         DB.Inst().RemoveCollection(_tablePuerto);
+        DB.Inst().RemoveCollection(_tableQuest);
         DB.Inst().RemoveCollection(_tableResource);
+        DB.Inst().RemoveCollection(_tableReward);
         DB.Inst().RemoveCollection(_tableScenario);
         DB.Inst().RemoveCollection(_tableUser);
         DB.Inst().RemoveCollection(_tableUserGame);
@@ -64,7 +68,9 @@ public class PreLoadDb{
         DB.Inst().NewCollection(_tablePowerup);
         DB.Inst().NewCollection(_tableProfileAi);
         DB.Inst().NewCollection(_tablePuerto);
+        DB.Inst().NewCollection(_tableQuest);
         DB.Inst().NewCollection(_tableResource);
+        DB.Inst().NewCollection(_tableReward);
         DB.Inst().NewCollection(_tableScenario);
         DB.Inst().NewCollection(_tableUser);
         DB.Inst().NewCollection(_tableUserGame);
@@ -146,7 +152,7 @@ public class PreLoadDb{
         rwd1.Value = 50d;
         Reward rwd2 = new Reward();
         rwd2.TypeReward = Types.Reward.Exp;
-        rwd2.Code = "Second";
+        rwd2.Code = "second";
         rwd2.Value = 100d;
         Reward rwd3 = new Reward();
         rwd3.TypeReward = Types.Reward.Vessel;
@@ -163,8 +169,8 @@ public class PreLoadDb{
 
         Battle battle = new Battle();
         battle.Code = "battle1";
-        battle.Coordinates = new Vector2(100, 200);
-        battle.PanelSize = new Vector2(6, 6);
+        battle.Position = new Coordinates{X = 100, Y = 200};
+        battle.PanelSize = new Coordinates{X = 6, Y = 6};
         battle.Trans = new[]{
             new GenericTrans{text = "Batalla Test", id_locale = 1},
             new GenericTrans{text = "Test Battle", id_locale = 2}
@@ -191,11 +197,57 @@ public class PreLoadDb{
         battle.ProfileCpu = new List<int>{
             1
         };
-        Reward rw = DbMngr.Inst().RewardController.FindByCode("first");
+        Reward rw1 = DbMngr.Inst().RewardController.FindByCode("first");
         battle.Rewards = new List<int>{
-            rw.IdReward
+            rw1.IdReward
         };
         battle.AllowedPowerups = null;
         DbMngr.Inst().BattleController.Create(battle);
+
+        Quest qst = new Quest();
+        qst.Code = "quest1";
+        qst.MinLevel = 1;
+        Reward rw2 = DbMngr.Inst().RewardController.FindByCode("second");
+        qst.Rewards = new List<int>{
+            rw2.IdReward
+        };
+        qst.Description = new[]{
+            new GenericTrans{
+                text =
+                    "Descripción de la misión. La misión consta de varios objetivos, como conseguir objetos, ciertas batallas, ...",
+                id_locale = 1
+            },
+            new GenericTrans{
+                text =
+                    "Description of the mission. The mission consists of several objectives, such as getting objects, certain battles, ...",
+                id_locale = 2
+            }
+        };
+        qst.Trans = new[]{
+            new GenericTrans{text = "Misión 1", id_locale = 1},
+            new GenericTrans{text = "Quest 1", id_locale = 2}
+        };
+        DbMngr.Inst().QuestController.Create(qst);
+
+        City city = new City();
+        city.Code = "caramelo";
+        city.CrewSide = Types.CrewSide.Neutral;
+        city.IdMarket = 1;
+        city.Position = new Coordinates{X = 100, Y = 100};
+        city.Trans = new[]{
+            new GenericTrans{text = "Ciudad Caramelo", id_locale = 1},
+            new GenericTrans{text = "Candy City", id_locale = 2}
+        };
+        Battle btl = DbMngr.Inst().BattleController.FindByCode("battle1");
+        city.Battles = new List<long>{
+            btl.IdBattle
+        };
+        Resource cityResource = DbMngr.Inst().ResourceController.FindByCode("city");
+        city.IdResource = cityResource.IdResource;
+        Quest quest = DbMngr.Inst().QuestController.FindByCode("quest1");
+        city.Quests = new List<long>{
+            quest.IdQuest
+        };
+        DbMngr.Inst().CityController.Create(city);
     }
 }

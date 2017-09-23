@@ -39,7 +39,6 @@ public class MarketController{
     public string GenerateCode(){
         StringBuilder code = new StringBuilder();
         code.Append(System.Guid.NewGuid());
-        code.Append(GameManager.GetCurrentTimestamp());
         return code.ToString();
     }
 

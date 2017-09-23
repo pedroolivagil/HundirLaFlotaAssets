@@ -67,7 +67,6 @@ public class UserController{
         if (user.Lastname != null){
             code.Append(user.Lastname.Substring(0, user.Lastname.Length < 5 ? user.Lastname.Length : 5));
         }
-        code.Append(GameManager.GetCurrentTimestamp());
         return code.ToString();
     }
 

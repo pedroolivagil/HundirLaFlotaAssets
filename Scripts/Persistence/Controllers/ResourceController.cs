@@ -23,7 +23,6 @@ public class ResourceController{
             return false;
         }
         resource.IdResource = GenerateId();
-        resource.Code = GenerateCode();
         return pm.Persist<Resource>(resource);
     }
 
@@ -36,13 +35,6 @@ public class ResourceController{
         return pm.Remove<Resource>(query);
     }
     
-    public string GenerateCode(){
-        StringBuilder code = new StringBuilder();
-        code.Append(System.Guid.NewGuid());
-        code.Append(GameManager.GetCurrentTimestamp());
-        return code.ToString();
-    }
-
     private long GetLastId(){
         return pm.GetLastId<Resource>(Resource => Resource.IdResource);
     }

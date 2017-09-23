@@ -13,6 +13,6 @@ public class Scenario : _Entity{
     public GenericTrans[] Trans{ get; set; }
     public int Resource{ get; set; } // ID del resource
     public List<int> Rewards{ get; set; } // IDs de las rewards
-    public List<int> Cities{ get; set; } // IDs de las batallas de cada mapa
-    public List<Vector2> RandomBattles{ get; set; } // Array de coordenadas para las batallas random
+    public List<long> Cities{ get; set; } // IDs de las batallas de cada mapa
+    public List<Coordinates> RandomBattles{ get; set; } // Array de coordenadas para las batallas random
 }

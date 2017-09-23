@@ -9,9 +9,10 @@ public class City : _Entity{
 
     public long IdCity{ get; set; }
     public GenericTrans[] Trans{ get; set; }
-    public List<int> Battles{ get; set; } // IDs de las batallas de cada mapa
-    public bool CrewSide{ get; set; } // Booleano para el bando de la ciudad (enemigo o aliado)
-    public List<int> Quests{ get; set; } // Objetivos para las ciudades, batallas, etc, ...
+    public int CrewSide{ get; set; } // Booleano para el bando de la ciudad (enemigo o aliado)
     public int IdMarket{ get; set; } // Mercado asociado a la ciudad
     public int IdResource{ get; set; } // ID resource asociado
+    public Coordinates Position{ get; set; }
+    public List<long> Battles{ get; set; } // IDs de las batallas de cada mapa
+    public List<long> Quests{ get; set; } // Objetivos para las ciudades, batallas, etc, ...
 }

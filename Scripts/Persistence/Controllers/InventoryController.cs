@@ -39,7 +39,6 @@ public class InventoryController{
     public string GenerateCode(){
         StringBuilder code = new StringBuilder();
         code.Append(System.Guid.NewGuid());
-        code.Append(GameManager.GetCurrentTimestamp());
         return code.ToString();
     }
 

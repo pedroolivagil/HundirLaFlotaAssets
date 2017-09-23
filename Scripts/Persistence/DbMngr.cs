@@ -10,6 +10,7 @@
     public MarketController MarketController{ get; private set; }
     public PowerupController PowerupController{ get; private set; }
     public ProfileAIController ProfileAiController{ get; private set; }
+    public QuestController QuestController{ get; private set; }
     public ResourceController ResourceController{ get; private set; }
     public RewardController RewardController{ get; private set; }
     public ScenarioController ScenarioController{ get; private set; }
@@ -30,6 +31,7 @@
         MarketController = new MarketController();
         PowerupController = new PowerupController();
         ProfileAiController = new ProfileAIController();
+        QuestController = new QuestController();
         ResourceController = new ResourceController();
         RewardController = new RewardController();
         ScenarioController = new ScenarioController();
