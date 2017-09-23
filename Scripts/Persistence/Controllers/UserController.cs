@@ -59,8 +59,14 @@ public class UserController{
 
     public string GenerateCode(User user){
         StringBuilder code = new StringBuilder();
-        code.Append(user.Firstname.Substring(0, user.Firstname.Length < 5 ? user.Firstname.Length : 5));
-        code.Append(user.Lastname.Substring(0, user.Lastname.Length < 5 ? user.Lastname.Length : 5));
+        if (user.Firstname != null){
+            code.Append(user.Firstname.Substring(0, user.Firstname.Length < 5 ? user.Firstname.Length : 5));
+        } else{
+            code.Append(user.Username.Substring(0, user.Username.Length < 5 ? user.Username.Length : 5));
+        }
+        if (user.Lastname != null){
+            code.Append(user.Lastname.Substring(0, user.Lastname.Length < 5 ? user.Lastname.Length : 5));
+        }
         code.Append(GameManager.GetCurrentTimestamp());
         return code.ToString();
     }

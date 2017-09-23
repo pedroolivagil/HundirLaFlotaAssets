@@ -13,7 +13,7 @@ public class VesselController{
     }
 
     public Vessel FindByCode(string code){
-        var query = Query<Vessel>.EQ(Vessel => Vessel.Code, code);
+        var query = Query<Vessel>.EQ(Vessel => Vessel.Code, code.ToUpper());
         return pm.FindByKey<Vessel>(query);
     }
 

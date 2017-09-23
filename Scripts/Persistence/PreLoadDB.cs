@@ -85,8 +85,8 @@ public class PreLoadDb{
         ship2.Inventory = 0;
         ship2.Weapon = 0;
         ship2.Trans = new[]{
-            new GenericTrans{text = "", id_locale = 1},
-            new GenericTrans{text = "", id_locale = 2}
+            new GenericTrans{text = "Barco M", id_locale = 1},
+            new GenericTrans{text = "Ship M", id_locale = 2}
         };
         Vessel ship3 = new Vessel();
         ship3.Code = "ship_game_l";
@@ -94,8 +94,8 @@ public class PreLoadDb{
         ship3.Inventory = 0;
         ship3.Weapon = 0;
         ship3.Trans = new[]{
-            new GenericTrans{text = "", id_locale = 1},
-            new GenericTrans{text = "", id_locale = 2}
+            new GenericTrans{text = "Barco L", id_locale = 1},
+            new GenericTrans{text = "Ship L", id_locale = 2}
         };
         Vessel ship4 = new Vessel();
         ship4.Code = "ship_game_xl";
@@ -103,8 +103,8 @@ public class PreLoadDb{
         ship4.Inventory = 0;
         ship4.Weapon = 0;
         ship4.Trans = new[]{
-            new GenericTrans{text = "", id_locale = 1},
-            new GenericTrans{text = "", id_locale = 2}
+            new GenericTrans{text = "Barco XL", id_locale = 1},
+            new GenericTrans{text = "Ship XL", id_locale = 2}
         };
         Vessel ship5 = new Vessel();
         ship5.Code = "ship_game_xxl";
@@ -112,13 +112,22 @@ public class PreLoadDb{
         ship5.Inventory = 0;
         ship5.Weapon = 0;
         ship5.Trans = new[]{
-            new GenericTrans{text = "", id_locale = 1},
-            new GenericTrans{text = "", id_locale = 2}
+            new GenericTrans{text = "Barco XXL", id_locale = 1},
+            new GenericTrans{text = "Ship XXL", id_locale = 2}
         };
         DbMngr.Inst().VesselController.Create(ship1);
         DbMngr.Inst().VesselController.Create(ship2);
         DbMngr.Inst().VesselController.Create(ship3);
         DbMngr.Inst().VesselController.Create(ship4);
         DbMngr.Inst().VesselController.Create(ship5);
+
+        //Usuarios
+        User u1 = new User();
+        u1.Username = "admin";
+        u1.Password = "1234";
+        u1.Email = "admin@hundirflota.com";
+        u1.Firstname = "Admin";
+        u1.RolUser = GameManager.RolUsers.Admin;
+        DbMngr.Inst().UserController.Create(u1);
     }
 }

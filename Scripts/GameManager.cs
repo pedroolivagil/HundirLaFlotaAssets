@@ -22,7 +22,13 @@ public class GameManager : MonoBehaviour{
         set{ _userGame = value; }
     }
 
-    // Use this for initialization
+    public abstract class RolUsers{
+        public static readonly int Admin = 0;
+        public static readonly int Mod = 1;
+        public static readonly int User = 2;
+    }
+
+// Use this for initialization
     void Start(){
         DontDestroyOnLoad(gameObject);
         config = new Config();
@@ -118,7 +124,6 @@ public class GameManager : MonoBehaviour{
         gameObject.transform.SetAsLastSibling();
     }
 
-
     public static Config GetConfig(){
         return config;
     }
@@ -171,8 +176,8 @@ public class GameManager : MonoBehaviour{
         SHA256Managed hash = new SHA256Managed();
         byte[] signatureData = hash.ComputeHash(new UnicodeEncoding().GetBytes(inputString));
         return Convert.ToBase64String(signatureData);
-        // For PHP read password
-        // print base64_encode(hash("sha256",mb_convert_encoding("abcdefg","UTF-16LE"),true));
+// For PHP read password
+// print base64_encode(hash("sha256",mb_convert_encoding("abcdefg","UTF-16LE"),true));
     }
 
     public static Texture2D ConvertBase64ToTexture2D(string base64){

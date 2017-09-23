@@ -10,7 +10,7 @@ public class User : _Entity{
     public long Birthday{ get; set; }
     public bool AcountActive{ get; set; }
     public int Gender{ get; set; }
-    public int TypeUser{ get; set; }
+    public int RolUser{ get; set; }
     public string Username{ get; set; }
     public string Password{ get; set; }
     public string Email{ get; set; }
