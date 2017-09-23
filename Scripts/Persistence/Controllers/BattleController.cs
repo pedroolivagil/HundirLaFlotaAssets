@@ -13,7 +13,7 @@ public class BattleController{
     }
 
     public Battle FindByCode(string code){
-        var query = Query<Battle>.EQ(Battle => Battle.Code, code);
+        var query = Query<Battle>.EQ(Battle => Battle.Code, code.ToUpper());
         return pm.FindByKey<Battle>(query);
     }
 

@@ -13,7 +13,7 @@ public class AppLocaleController{
     }
 
     public AppLocale FindByCodeIso(string code){
-        var query = Query<AppLocale>.EQ(AppLocale => AppLocale.Code, code);
+        var query = Query<AppLocale>.EQ(AppLocale => AppLocale.Code, code.ToUpper());
         return pm.FindByKey<AppLocale>(query);
     }
 

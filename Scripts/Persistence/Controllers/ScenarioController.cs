@@ -13,7 +13,7 @@ public class ScenarioController{
     }
 
     public Scenario FindByCode(string code){
-        var query = Query<Scenario>.EQ(Scenario => Scenario.Code, code);
+        var query = Query<Scenario>.EQ(Scenario => Scenario.Code, code.ToUpper());
         return pm.FindByKey<Scenario>(query);
     }
 

@@ -13,7 +13,7 @@ public class PowerupController{
     }
 
     public Powerup FindByCode(string code){
-        var query = Query<Powerup>.EQ(Powerup => Powerup.Code, code);
+        var query = Query<Powerup>.EQ(Powerup => Powerup.Code, code.ToUpper());
         return pm.FindByKey<Powerup>(query);
     }
 

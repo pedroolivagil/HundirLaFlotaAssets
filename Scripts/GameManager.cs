@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = System.Random;
 
-public class GameManager : MonoBehaviour{
+public partial class GameManager : MonoBehaviour{
     public static readonly string DIALOG_TAG = "Dialog";
     public int screenWidth = 1920;
     public int screenHeigth = 1080;
@@ -20,12 +20,6 @@ public class GameManager : MonoBehaviour{
     public static User userGame{
         get{ return _userGame; }
         set{ _userGame = value; }
-    }
-
-    public abstract class RolUsers{
-        public static readonly int Admin = 0;
-        public static readonly int Mod = 1;
-        public static readonly int User = 2;
     }
 
 // Use this for initialization

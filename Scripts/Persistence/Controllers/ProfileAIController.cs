@@ -14,7 +14,7 @@ public class ProfileAIController{
     }
 
     public ProfileAI FindByCode(string code){
-        var query = Query<ProfileAI>.EQ(ProfileAI => ProfileAI.Code, code);
+        var query = Query<ProfileAI>.EQ(ProfileAI => ProfileAI.Code, code.ToUpper());
         return pm.FindByKey<ProfileAI>(query);
     }
 

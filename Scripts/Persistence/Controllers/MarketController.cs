@@ -14,7 +14,7 @@ public class MarketController{
     }
 
     public Market FindByCode(string code){
-        var query = Query<Market>.EQ(Market => Market.Code, code);
+        var query = Query<Market>.EQ(Market => Market.Code, code.ToUpper());
         return pm.FindByKey<Market>(query);
     }
 

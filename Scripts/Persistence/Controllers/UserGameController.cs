@@ -14,7 +14,7 @@ public class UserGameGameController{
     }
 
     public UserGame FindByCode(string code){
-        var query = Query<UserGame>.EQ(UserGame => UserGame.Code, code);
+        var query = Query<UserGame>.EQ(UserGame => UserGame.Code, code.ToUpper());
         return pm.FindByKey<UserGame>(query);
     }
 

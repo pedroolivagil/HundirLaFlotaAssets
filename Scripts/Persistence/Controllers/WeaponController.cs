@@ -13,7 +13,7 @@ public class WeaponController{
     }
 
     public Weapon FindByCode(string code){
-        var query = Query<Weapon>.EQ(Weapon => Weapon.Code, code);
+        var query = Query<Weapon>.EQ(Weapon => Weapon.Code, code.ToUpper());
         return pm.FindByKey<Weapon>(query);
     }
 

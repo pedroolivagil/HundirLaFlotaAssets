@@ -13,7 +13,7 @@ public class ItemController{
     }
 
     public Item FindByCode(string code){
-        var query = Query<Item>.EQ(Item => Item.Code, code);
+        var query = Query<Item>.EQ(Item => Item.Code, code.ToUpper());
         return pm.FindByKey<Item>(query);
     }
 

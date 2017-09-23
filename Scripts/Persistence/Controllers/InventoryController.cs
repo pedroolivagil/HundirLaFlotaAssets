@@ -14,7 +14,7 @@ public class InventoryController{
     }
 
     public Inventory FindByCode(string code){
-        var query = Query<Inventory>.EQ(Inventory => Inventory.Code, code);
+        var query = Query<Inventory>.EQ(Inventory => Inventory.Code, code.ToUpper());
         return pm.FindByKey<Inventory>(query);
     }
 

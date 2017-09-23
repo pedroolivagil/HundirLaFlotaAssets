@@ -13,7 +13,7 @@ public class CityController{
     }
 
     public City FindByCode(string code){
-        var query = Query<City>.EQ(City => City.Code, code);
+        var query = Query<City>.EQ(City => City.Code, code.ToUpper());
         return pm.FindByKey<City>(query);
     }
 
