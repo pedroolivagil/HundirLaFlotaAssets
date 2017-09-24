@@ -230,30 +230,70 @@ public class PreLoadDb{
         DbMngr.Inst().QuestController.Create(qst);
 
         Market mrkt = new Market();
+        mrkt.Code = "marketgame";
         mrkt.Items = null;
         mrkt.ItemsPurchase = null;
         DbMngr.Inst().MarketController.Create(mrkt);
-        
-//        City city = new City();
-//        city.Code = "caramelo";
-//        city.CrewSide = Types.CrewSide.Neutral;
-//        Market market = DbMngr.Inst().MarketController.FindByCode("");
-//        city.IdMarket = market.IdMarket;
-//        city.Position = new Coordinates{X = 100, Y = 100};
-//        city.Trans = new[]{
-//            new GenericTrans{text = "Ciudad Caramelo", id_locale = 1},
-//            new GenericTrans{text = "Candy City", id_locale = 2}
-//        };
-//        Battle btl = DbMngr.Inst().BattleController.FindByCode("battle1");
-//        city.Battles = new List<long>{
-//            btl.IdBattle
-//        };
-//        Resource cityResource = DbMngr.Inst().ResourceController.FindByCode("city");
-//        city.IdResource = cityResource.IdResource;
-//        Quest quest = DbMngr.Inst().QuestController.FindByCode("quest1");
-//        city.Quests = new List<long>{
-//            quest.IdQuest
-//        };
-//        DbMngr.Inst().CityController.Create(city);
+
+        Harbor harbor = new Harbor();
+        harbor.Code = "port_royal";
+        harbor.Trans = new[]{
+            new GenericTrans{text = "Puerto Real", id_locale = 1},
+            new GenericTrans{text = "Port Royal", id_locale = 2}
+        };
+        harbor.PriceGemsRepair = 2;
+        harbor.PriceGoldRepair = 1500;
+        harbor.TimeGemsRepair = 100;
+        harbor.TimeGoldRepair = 3600;
+        DbMngr.Inst().HarborController.Create(harbor);
+
+        City city = new City();
+        city.Code = "caramelo";
+        city.CrewSide = Types.CrewSide.Neutral;
+        Market market = DbMngr.Inst().MarketController.FindByCode("marketgame");
+        city.IdMarket = market.IdMarket;
+        Harbor hbr = DbMngr.Inst().HarborController.FindByCode("marketgame");
+        city.IdHarbor = hbr.IdHarbor;
+        city.Position = new Coordinates{X = 100, Y = 100};
+        city.Trans = new[]{
+            new GenericTrans{text = "Ciudad Caramelo", id_locale = 1},
+            new GenericTrans{text = "Candy City", id_locale = 2}
+        };
+        Battle btl = DbMngr.Inst().BattleController.FindByCode("battle1");
+        city.Battles = new List<long>{
+            btl.IdBattle
+        };
+        Resource cityResource = DbMngr.Inst().ResourceController.FindByCode("city");
+        city.IdResource = cityResource.IdResource;
+        Quest quest = DbMngr.Inst().QuestController.FindByCode("quest1");
+        city.Quests = new List<long>{
+            quest.IdQuest
+        };
+        DbMngr.Inst().CityController.Create(city);
+
+        Scenario scn = new Scenario();
+        scn.Code = "scenario_inicial";
+        scn.MinLevel = 1;
+        Resource scnResource = DbMngr.Inst().ResourceController.FindByCode("mapa");
+        scn.Resource = scnResource.IdResource;
+        scn.Trans = new[]{
+            new GenericTrans{text = "Región Egmar", id_locale = 1},
+            new GenericTrans{text = "Egmar region", id_locale = 2}
+        };
+        scn.RandomBattles = new List<Coordinates>{
+            new Coordinates{X = 200, Y = 300},
+            new Coordinates{X = 300, Y = 350}
+        };
+        Reward rw3 = DbMngr.Inst().RewardController.FindByCode("third");
+        Reward rw4 = DbMngr.Inst().RewardController.FindByCode("fourth");
+        scn.Rewards = new List<int>{
+            rw3.IdReward,
+            rw4.IdReward
+        };
+        City ct = DbMngr.Inst().CityController.FindByCode("caramelo");
+        scn.Cities = new List<long>{
+            ct.IdCity
+        };
+        DbMngr.Inst().ScenarioController.Create(scn);
     }
 }

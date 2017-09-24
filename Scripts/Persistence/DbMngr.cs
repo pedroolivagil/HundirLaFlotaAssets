@@ -7,6 +7,7 @@ public class DbMngr{
     public BankController BankController{ get; private set; }
     public BattleController BattleController{ get; private set; }
     public CityController CityController{ get; private set; }
+    public HarborController HarborController{ get; private set; }
     public InventoryController InventoryController{ get; private set; }
     public ItemController ItemController{ get; private set; }
     public MarketController MarketController{ get; private set; }
@@ -28,6 +29,7 @@ public class DbMngr{
         BankController = new BankController();
         BattleController = new BattleController();
         CityController = new CityController();
+        HarborController = new HarborController();
         InventoryController = new InventoryController();
         ItemController = new ItemController();
         MarketController = new MarketController();
@@ -62,6 +64,8 @@ public class DbMngr{
             BattleController.Create((Battle) entity);
         } else if (typeof(T) == typeof(City)){
             CityController.Create((City) entity);
+        } else if (typeof(T) == typeof(Harbor)){
+            HarborController.Create((Harbor) entity);
         } else if (typeof(T) == typeof(Inventory)){
             InventoryController.Create((Inventory) entity);
         } else if (typeof(T) == typeof(Item)){
