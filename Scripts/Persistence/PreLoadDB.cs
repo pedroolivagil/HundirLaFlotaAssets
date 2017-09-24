@@ -229,25 +229,31 @@ public class PreLoadDb{
         };
         DbMngr.Inst().QuestController.Create(qst);
 
-        City city = new City();
-        city.Code = "caramelo";
-        city.CrewSide = Types.CrewSide.Neutral;
-        city.IdMarket = 1;
-        city.Position = new Coordinates{X = 100, Y = 100};
-        city.Trans = new[]{
-            new GenericTrans{text = "Ciudad Caramelo", id_locale = 1},
-            new GenericTrans{text = "Candy City", id_locale = 2}
-        };
-        Battle btl = DbMngr.Inst().BattleController.FindByCode("battle1");
-        city.Battles = new List<long>{
-            btl.IdBattle
-        };
-        Resource cityResource = DbMngr.Inst().ResourceController.FindByCode("city");
-        city.IdResource = cityResource.IdResource;
-        Quest quest = DbMngr.Inst().QuestController.FindByCode("quest1");
-        city.Quests = new List<long>{
-            quest.IdQuest
-        };
-        DbMngr.Inst().CityController.Create(city);
+        Market mrkt = new Market();
+        mrkt.Items = null;
+        mrkt.ItemsPurchase = null;
+        DbMngr.Inst().MarketController.Create(mrkt);
+        
+//        City city = new City();
+//        city.Code = "caramelo";
+//        city.CrewSide = Types.CrewSide.Neutral;
+//        Market market = DbMngr.Inst().MarketController.FindByCode("");
+//        city.IdMarket = market.IdMarket;
+//        city.Position = new Coordinates{X = 100, Y = 100};
+//        city.Trans = new[]{
+//            new GenericTrans{text = "Ciudad Caramelo", id_locale = 1},
+//            new GenericTrans{text = "Candy City", id_locale = 2}
+//        };
+//        Battle btl = DbMngr.Inst().BattleController.FindByCode("battle1");
+//        city.Battles = new List<long>{
+//            btl.IdBattle
+//        };
+//        Resource cityResource = DbMngr.Inst().ResourceController.FindByCode("city");
+//        city.IdResource = cityResource.IdResource;
+//        Quest quest = DbMngr.Inst().QuestController.FindByCode("quest1");
+//        city.Quests = new List<long>{
+//            quest.IdQuest
+//        };
+//        DbMngr.Inst().CityController.Create(city);
     }
 }

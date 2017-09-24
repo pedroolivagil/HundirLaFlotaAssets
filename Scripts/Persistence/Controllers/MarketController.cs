@@ -46,7 +46,7 @@ public class MarketController{
         return pm.GetLastId<Market>(Market => Market.IdMarket);
     }
 
-    private long GenerateId(){
-        return GetLastId() + GameManager.RandomBetween();
+    private int GenerateId(){
+        return (int) GetLastId() + GameManager.RandomBetween();
     }
 }

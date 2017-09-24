@@ -11,6 +11,7 @@ public class City : _Entity{
     public GenericTrans[] Trans{ get; set; }
     public int CrewSide{ get; set; } // Booleano para el bando de la ciudad (enemigo o aliado)
     public int IdMarket{ get; set; } // Mercado asociado a la ciudad
+    public int IdPuerto{ get; set; } // Mercado asociado a la ciudad
     public int IdResource{ get; set; } // ID resource asociado
     public Coordinates Position{ get; set; }
     public List<long> Battles{ get; set; } // IDs de las batallas de cada mapa

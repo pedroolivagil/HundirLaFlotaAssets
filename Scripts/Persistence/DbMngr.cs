@@ -1,4 +1,6 @@
-﻿public class DbMngr{
+﻿using System;
+
+public class DbMngr{
     private static DbMngr _instance;
     public AppLocaleController AppLocaleController{ get; private set; }
     public AppTextController AppTextController{ get; private set; }
@@ -45,5 +47,47 @@
             _instance = new DbMngr();
         }
         return _instance;
+    }
+
+    public void Persist<T>(_Entity entity){
+        if (typeof(T) == typeof(User)){
+            UserController.Create((User) entity);
+        } else if (typeof(T) == typeof(AppLocale)){
+            AppLocaleController.Create((AppLocale) entity);
+        } else if (typeof(T) == typeof(AppText)){
+            AppTextController.Create((AppText) entity);
+        } else if (typeof(T) == typeof(Bank)){
+            BankController.Create((Bank) entity);
+        } else if (typeof(T) == typeof(Battle)){
+            BattleController.Create((Battle) entity);
+        } else if (typeof(T) == typeof(City)){
+            CityController.Create((City) entity);
+        } else if (typeof(T) == typeof(Inventory)){
+            InventoryController.Create((Inventory) entity);
+        } else if (typeof(T) == typeof(Item)){
+            ItemController.Create((Item) entity);
+        } else if (typeof(T) == typeof(Market)){
+            MarketController.Create((Market) entity);
+        } else if (typeof(T) == typeof(Powerup)){
+            PowerupController.Create((Powerup) entity);
+        } else if (typeof(T) == typeof(ProfileAI)){
+            ProfileAiController.Create((ProfileAI) entity);
+        } else if (typeof(T) == typeof(Quest)){
+            QuestController.Create((Quest) entity);
+        } else if (typeof(T) == typeof(Resource)){
+            ResourceController.Create((Resource) entity);
+        } else if (typeof(T) == typeof(Reward)){
+            RewardController.Create((Reward) entity);
+        } else if (typeof(T) == typeof(Scenario)){
+            ScenarioController.Create((Scenario) entity);
+        } else if (typeof(T) == typeof(UserGame)){
+            UserGameGameController.Create((UserGame) entity);
+        } else if (typeof(T) == typeof(Vessel)){
+            VesselController.Create((Vessel) entity);
+        } else if (typeof(T) == typeof(Weapon)){
+            WeaponController.Create((Weapon) entity);
+        } else{
+            throw new Exception("Controller not implemented yet.");
+        }
     }
 }
