@@ -1,10 +1,10 @@
 ﻿using System.Text;
 using MongoDB.Driver.Builders;
 
-public class UserGameGameController{
+public class UserGameController{
     private _PersistenceManager pm;
 
-    public UserGameGameController(){
+    public UserGameController(){
         pm = new _PersistenceManager();
     }
 
@@ -15,6 +15,11 @@ public class UserGameGameController{
 
     public UserGame FindByCode(string code){
         var query = Query<UserGame>.EQ(UserGame => UserGame.Code, code.ToUpper());
+        return pm.FindByKey<UserGame>(query);
+    }
+
+    public UserGame FindByIdUser(long idUser){
+        var query = Query<UserGame>.EQ(UserGame => UserGame.User, idUser);
         return pm.FindByKey<UserGame>(query);
     }
 

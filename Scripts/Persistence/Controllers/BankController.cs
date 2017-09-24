@@ -14,7 +14,7 @@ public class BankController{
     }
 
     public Bank FindByCode(string code){
-        var query = Query<Bank>.EQ(Bank => Bank.Code, code);
+        var query = Query<Bank>.EQ(Bank => Bank.Code, code.ToUpper());
         return pm.FindByKey<Bank>(query);
     }
 

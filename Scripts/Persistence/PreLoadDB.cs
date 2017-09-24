@@ -308,8 +308,9 @@ public class PreLoadDb{
         uGame.Bank = bnk.IdBank;
         Scenario scnBase = DbMngr.Inst().ScenarioController.FindByCode("scenario_inicial");
         uGame.Scenario = scnBase.IdScenario;
-        User usr = DbMngr.Inst().UserController.FindByUserName("Admin");
+        User usr = DbMngr.Inst().UserController.FindByUserName("admin");
         uGame.User = usr.IdUser;
         uGame.PlayTime = 0;
+        DbMngr.Inst().UserGameController.Create(uGame);
     }
 }

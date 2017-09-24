@@ -4,26 +4,20 @@ using UnityEngine.UI;
 
 public class SinglePlayerBattleSelector : ScenesGame{
     public RawImage mapa;
-    public RawImage city;
 
     // Use this for initialization
     void Start(){
         HideDialogsStart();
-
-////        User user = DbMngr.Inst().UserController.FindByUserName("Insert");
-//        Resource resource = DbMngr.Inst().ResourceController.FindByCode("mapa");
-////        Debug.Log(user.Firstname);
-////        Resource cityResource = DbMngr.Inst().ResourceController.FindByCode("city");
-////        Debug.Log("Resource: " + resource.Name);
-//
-//        
-//        if (GameManager.IsNotNull(resource.File)){
-//            mapa.texture = GameManager.ConvertBase64ToTexture2D(resource.File);
-//        }
-////        if (GameManager.IsNotNull(cityResource.File)){
-////            city.texture = GameManager.ConvertBase64ToTexture2D(cityResource.File);
-////        }
-//        Debug.Log("LastID: "+DbMngr.Inst().VesselController.GetLastId());
-        PreLoadDb.Inst().CreateDb();
+        User user = DbMngr.Inst().UserController.FindByUserName("admin");
+        UserGame game = DbMngr.Inst().UserGameController.FindByIdUser(user.IdUser);
+        if (game != null){
+            Bank bank = DbMngr.Inst().BankController.FindById(game.Bank);
+            Scenario scenario = DbMngr.Inst().ScenarioController.FindById(game.Scenario);
+            Resource scenarioResource = DbMngr.Inst().ResourceController.FindById(scenario.Resource);
+            if (GameManager.IsNotNull(scenarioResource.File)){
+                mapa.texture = GameManager.ConvertBase64ToTexture2D(scenarioResource.File);
+            }
+            // PreLoadDb.Inst().CreateDb();
+        }
     }
 }

@@ -18,7 +18,7 @@ public class DbMngr{
     public RewardController RewardController{ get; private set; }
     public ScenarioController ScenarioController{ get; private set; }
     public UserController UserController{ get; private set; }
-    public UserGameGameController UserGameGameController{ get; private set; }
+    public UserGameController UserGameController{ get; private set; }
     public VesselController VesselController{ get; private set; }
     public WeaponController WeaponController{ get; private set; }
 
@@ -39,7 +39,7 @@ public class DbMngr{
         ResourceController = new ResourceController();
         RewardController = new RewardController();
         ScenarioController = new ScenarioController();
-        UserGameGameController = new UserGameGameController();
+        UserGameController = new UserGameController();
         VesselController = new VesselController();
         WeaponController = new WeaponController();
     }
@@ -85,7 +85,7 @@ public class DbMngr{
         } else if (typeof(T) == typeof(Scenario)){
             ScenarioController.Create((Scenario) entity);
         } else if (typeof(T) == typeof(UserGame)){
-            UserGameGameController.Create((UserGame) entity);
+            UserGameController.Create((UserGame) entity);
         } else if (typeof(T) == typeof(Vessel)){
             VesselController.Create((Vessel) entity);
         } else if (typeof(T) == typeof(Weapon)){
