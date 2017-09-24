@@ -252,7 +252,7 @@ public class PreLoadDb{
         city.CrewSide = Types.CrewSide.Neutral;
         Market market = DbMngr.Inst().MarketController.FindByCode("marketgame");
         city.IdMarket = market.IdMarket;
-        Harbor hbr = DbMngr.Inst().HarborController.FindByCode("marketgame");
+        Harbor hbr = DbMngr.Inst().HarborController.FindByCode("port_royal");
         city.IdHarbor = hbr.IdHarbor;
         city.Position = new Coordinates{X = 100, Y = 100};
         city.Trans = new[]{
@@ -295,5 +295,21 @@ public class PreLoadDb{
             ct.IdCity
         };
         DbMngr.Inst().ScenarioController.Create(scn);
+
+        Bank bank = new Bank();
+        bank.Code = "bank_admin";
+        bank.TimeMoneyReward = 86400;
+        bank.MaxTimeMoneyReward = 86400;
+        DbMngr.Inst().BankController.Create(bank);
+
+        UserGame uGame = new UserGame();
+        uGame.Code = "ADMINGAME";
+        Bank bnk = DbMngr.Inst().BankController.FindByCode("bank_admin");
+        uGame.Bank = bnk.IdBank;
+        Scenario scnBase = DbMngr.Inst().ScenarioController.FindByCode("scenario_inicial");
+        uGame.Scenario = scnBase.IdScenario;
+        User usr = DbMngr.Inst().UserController.FindByUserName("Admin");
+        uGame.User = usr.IdUser;
+        uGame.PlayTime = 0;
     }
 }
