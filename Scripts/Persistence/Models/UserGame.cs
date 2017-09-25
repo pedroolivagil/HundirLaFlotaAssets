@@ -11,4 +11,5 @@ public class UserGame : _Entity{
     public int Scenario{ get; set; }
     public long Bank{ get; set; }
     public int PlayTime{ get; set; }
+    public int UserLevel{ get; set; }
 }

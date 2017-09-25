@@ -17,7 +17,7 @@ public class SceneTranlatable : MonoBehaviour{
                 if (excludeTranslate != null && GameManager.ArrayContains(excludeTranslate, item)){
                     continue;
                 }
-                string texto = LocaleManager.GetInstance().TranslateStr(item.text.Trim());
+                string texto = LocaleManager.Inst().TranslateStr(item.text.Trim());
                 item.text = texto;
             }
         }

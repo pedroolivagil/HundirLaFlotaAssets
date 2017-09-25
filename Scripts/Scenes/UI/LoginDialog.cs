@@ -28,7 +28,7 @@ public class LoginDialog : MonoBehaviour{
 
     private void Login(){
         if (GameManager.IsNull(user.text) || GameManager.IsNull(pass.text)){
-            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_FORM_EMPTY"));
+            Notifier.GetInstance().SendMessage(LocaleManager.Inst().TranslateStr("ERROR_FORM_EMPTY"));
         } else{
             User u = DbMngr.Inst().UserController.CheckLogin(user.text, pass.text);
             if (GameManager.IsNotNull(u)){
@@ -37,7 +37,7 @@ public class LoginDialog : MonoBehaviour{
                 GameManager.ChangeScreen(GameScenes.SinglePlayerBattleSelector, true);
             } else{
                 Notifier.GetInstance().SendMessage(
-                    LocaleManager.GetInstance().TranslateStr("ERROR_USER_NOT_EXIST"));
+                    LocaleManager.Inst().TranslateStr("ERROR_USER_NOT_EXIST"));
             }
         }
         GameManager.HideDialogConnection();

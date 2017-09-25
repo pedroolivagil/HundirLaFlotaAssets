@@ -12,10 +12,10 @@ public class SignUpDialog : MonoBehaviour{
 
     public void SignUpUser(){
         if (!terms.isOn){
-            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_ACCEPT_TERMS"));
+            Notifier.GetInstance().SendMessage(LocaleManager.Inst().TranslateStr("ERROR_ACCEPT_TERMS"));
         }
         else if (pass1.text == "" || pass2.text == "" || !pass1.text.Equals(pass2.text)){
-            Notifier.GetInstance().SendMessage(LocaleManager.GetInstance().TranslateStr("ERROR_PWD_NOT_EQUALS"));
+            Notifier.GetInstance().SendMessage(LocaleManager.Inst().TranslateStr("ERROR_PWD_NOT_EQUALS"));
         }
         else{
             /*DB.Inst().ShowDialogConnection();

@@ -20,7 +20,7 @@ public class SliderUI : MonoBehaviour{
 
     private void UpdateCustomTextSlider(){
         if (text != null){
-            text.text = LocaleManager.GetInstance().TranslateStr(textsCustom[(int) slider.value]);
+            text.text = LocaleManager.Inst().TranslateStr(textsCustom[(int) slider.value]);
         }
     }
 

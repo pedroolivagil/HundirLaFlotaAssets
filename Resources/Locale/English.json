@@ -4,7 +4,8 @@
     "COPYRIGHT_APP": "Copyright © 2017",
     "VERSION_APP": "v.",
     "CREDITS_APP": "Created and developed by OlivaDevelop",
-    "PRELOAD_SCREEN_GAME": "preparing boat...",
+    "PRELOAD_SCREEN_GAME1": "preparing boat...",
+    "PRELOAD_SCREEN_GAME2": "sailing...",
 
     "BUTTON_MUTLIPLAYER": "Play Online",
     "BUTTON_SINGLEPLAYER": "Play",

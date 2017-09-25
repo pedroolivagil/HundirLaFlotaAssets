@@ -16,7 +16,7 @@ public class LocaleManager{
     public string textReplace = "{$VAR$}";
     public string textReplaceLineBreak = "{$BR$}";
 
-    public static LocaleManager GetInstance(){
+    public static LocaleManager Inst(){
         init();
         return instance;
     }

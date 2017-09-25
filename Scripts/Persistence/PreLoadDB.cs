@@ -311,6 +311,7 @@ public class PreLoadDb{
         User usr = DbMngr.Inst().UserController.FindByUserName("admin");
         uGame.User = usr.IdUser;
         uGame.PlayTime = 0;
+        uGame.UserLevel = 1;
         DbMngr.Inst().UserGameController.Create(uGame);
     }
 }

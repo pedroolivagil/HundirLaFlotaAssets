@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SliderLoader: {fileID: 486616398}
+  TextTitleStatus: {fileID: 794018914}
   TextStatus: {fileID: 1532270126}
   isMockBar: 0
 --- !u!4 &124954142
@@ -347,7 +348,7 @@ Prefab:
     - target: {fileID: 224905078002832048, guid: 296159b27bcd4664fb790968b44234fa,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 296159b27bcd4664fb790968b44234fa, type: 2}
@@ -506,7 +507,7 @@ GameObject:
   - component: {fileID: 794018915}
   - component: {fileID: 794018914}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TitleStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,7 +563,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PRELOAD_SCREEN_GAME
+  m_Text: PRELOAD_SCREEN_GAME1
 --- !u!222 &794018915
 CanvasRenderer:
   m_ObjectHideFlags: 0
