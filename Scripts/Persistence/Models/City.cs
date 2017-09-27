@@ -13,6 +13,7 @@ public class City : _Entity{
     public int IdMarket{ get; set; } // Mercado asociado a la ciudad
     public int IdHarbor{ get; set; } // Mercado asociado a la ciudad
     public int IdResource{ get; set; } // ID resource asociado
+    public int Level{ get; set; }
     public Coordinates Position{ get; set; }
     public List<long> Battles{ get; set; } // IDs de las batallas de cada mapa
     public List<long> Quests{ get; set; } // Objetivos para las ciudades, batallas, etc, ...
