@@ -1,8 +1,8 @@
 ﻿using UnityEngine.UI;
 
 public class SinglePlayerBattleSelector : ScenesGame{
-    public RawImage mapa;
-    private Resource scenarioResource;
+    public RawImage Mapa;
+    private Resource _scenarioResource;
 
     // Use this for initialization
     void Start(){
@@ -10,6 +10,7 @@ public class SinglePlayerBattleSelector : ScenesGame{
         // PreLoadDb.Inst().CreateDb();
         User user = DbMngr.Inst().UserController.FindByUserName("admin");
         GameManager.User = user;
+        
         if (GameManager.User != null){
             UserGame game = DbMngr.Inst().UserGameController.FindByIdUser(GameManager.User.IdUser);
             if (game != null){
@@ -24,22 +25,22 @@ public class SinglePlayerBattleSelector : ScenesGame{
             }
             Init();
         } else{
-            Notifier.Inst().SendMessage("Error al cargar el usuario");
+            ReturnToMenu(false);
         }
     }
 
     public void Init(){
         if (GameManager.GameData != null){
-            scenarioResource = DbMngr.Inst().ResourceController.FindById(GameManager.GameData.Scenario.Resource);
-            if (GameManager.IsNotNull(scenarioResource.File)){
-                mapa.texture = GameManager.ConvertBase64ToTexture2D(scenarioResource.File);
+            _scenarioResource = DbMngr.Inst().ResourceController.FindById(GameManager.GameData.Scenario.Resource);
+            if (GameManager.IsNotNull(_scenarioResource.File)){
+                Mapa.texture = GameManager.ConvertBase64ToTexture2D(_scenarioResource.File);
             }
         } else{
-            Notifier.Inst().SendMessage("Error al cargar los datos del usuario");
+            ReturnToMenu(false);
         }
     }
 
-    public void ReturnToMenu(){
-        GameManager.ChangeScreen(GameScenes.MainMenuScene, true);
+    public void ReturnToMenu(bool preload){
+        GameManager.ChangeScreen(GameScenes.MainMenuScene, preload);
     }
 }
