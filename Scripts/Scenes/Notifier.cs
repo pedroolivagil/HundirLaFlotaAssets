@@ -4,12 +4,12 @@ using UnityEngine.UI;
 public class Notifier : MonoBehaviour{
     private static Notifier instance;
 
-    public static Notifier GetInstance(){
-        init();
+    public static Notifier Inst(){
+        Init();
         return instance;
     }
 
-    private static void init(){
+    private static void Init(){
         if (instance == null){
             instance = new Notifier();
             DontDestroyOnLoad(instance);

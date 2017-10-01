@@ -8,19 +8,15 @@ using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = System.Random;
 
-public partial class GameManager : MonoBehaviour{
+public class GameManager : MonoBehaviour{
     public static readonly string DIALOG_TAG = "Dialog";
     public int screenWidth = 1920;
     public int screenHeigth = 1080;
     private static int gameMode;
     private static List<Resolution> listResolution;
     private static Config config;
-    private static User _userGame;
-
-    public static User userGame{
-        get{ return _userGame; }
-        set{ _userGame = value; }
-    }
+    public static User User{ get; set; }
+    public static GameUserData GameData{ get; set; }
 
 // Use this for initialization
     void Start(){

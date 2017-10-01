@@ -18,7 +18,7 @@ public class MainMenuScene : ScenesGame{
     }
 
     public void ButtonPlayOnlineGame(){
-        Notifier.GetInstance().SendMessage(LocaleManager.Inst().TranslateStr("INFO_DEVELOP_FUNCTION"));
+        Notifier.Inst().SendMessage(LocaleManager.Inst().TranslateStr("INFO_DEVELOP_FUNCTION"));
     }
 
     public void ButtonConfig(){

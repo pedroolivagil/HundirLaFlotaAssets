@@ -28,15 +28,14 @@ public class LoginDialog : MonoBehaviour{
 
     private void Login(){
         if (GameManager.IsNull(user.text) || GameManager.IsNull(pass.text)){
-            Notifier.GetInstance().SendMessage(LocaleManager.Inst().TranslateStr("ERROR_FORM_EMPTY"));
+            Notifier.Inst().SendMessage(LocaleManager.Inst().TranslateStr("ERROR_FORM_EMPTY"));
         } else{
             User u = DbMngr.Inst().UserController.CheckLogin(user.text, pass.text);
             if (GameManager.IsNotNull(u)){
-                GameManager.userGame = u;
-                GameManager.GetConfig().WriteConfig(Config.Section.User, Config.Key.ID, u.IdUser);
+                GameManager.User = u;
                 GameManager.ChangeScreen(GameScenes.SinglePlayerBattleSelector, true);
             } else{
-                Notifier.GetInstance().SendMessage(
+                Notifier.Inst().SendMessage(
                     LocaleManager.Inst().TranslateStr("ERROR_USER_NOT_EXIST"));
             }
         }
