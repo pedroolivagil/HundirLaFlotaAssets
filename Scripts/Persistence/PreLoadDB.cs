@@ -78,6 +78,14 @@ public class PreLoadDb{
         DB.Inst().NewCollection(_tableWeapon);
 
         // Insertamos registros básicos
+        AppLocale localeEsp = new AppLocale();
+        localeEsp.Code = "ES";
+        localeEsp.Trans = new[]{
+            new GenericTrans{text = "Español", id_locale = 1},
+            new GenericTrans{text = "Spanish", id_locale = 2}
+        };
+        DbMngr.Inst().AppLocaleController.Create(localeEsp);
+
         //Barcos
         Vessel ship1 = new Vessel();
         ship1.Code = "ship_game_s";
@@ -297,9 +305,11 @@ public class PreLoadDb{
         DbMngr.Inst().ScenarioController.Create(scn);
 
         Bank bank = new Bank();
-        bank.Code = "bank_admin";
+        bank.Code = "bankadmin";
+        bank.accountNumber = DbMngr.Inst().BankController.GenerateAcountNumber(localeEsp);
         bank.TimeMoneyReward = 86400;
         bank.MaxTimeMoneyReward = 86400;
+
         DbMngr.Inst().BankController.Create(bank);
 
         UserGame uGame = new UserGame();

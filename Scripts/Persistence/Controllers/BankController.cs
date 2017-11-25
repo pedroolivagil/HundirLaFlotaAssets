@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using MongoDB.Driver.Builders;
 
 public class BankController{
@@ -41,5 +42,17 @@ public class BankController{
 
     private long GenerateId(){
         return GetLastId() + GameManager.RandomBetween();
+    }
+
+    public string GenerateAcountNumber(AppLocale locale){
+        StringBuilder number = new StringBuilder();
+        number.Append(locale.Code);
+        number.Append(GameManager.FillStringWithChar(GameManager.RandomBetween(0, 99), "0", 2));
+        number.Append(GameManager.FillStringWithChar(GameManager.RandomBetween(0, 999999), "0", 6));
+        number.Append(GameManager.FillStringWithChar(GameManager.RandomBetween(0, 99999999), "0", 8));
+        if (FindByCode(number.ToString()) != null){
+            GenerateAcountNumber(locale);
+        }
+        return number.ToString();
     }
 }

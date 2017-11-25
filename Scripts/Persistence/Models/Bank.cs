@@ -11,5 +11,6 @@ public class Bank : _Entity{
     public int MaxTimeMoneyReward{ get; set; } // Tiempo de límite recarga de la recompensa
     public int TimeMoneyReward{ get; set; } // Tiempo de recarga de la recompensa
     public double SafeBox{ get; set; } // Caja fuerte
+    public string accountNumber{ get; set; }
     public List<int> ItemsBox{ get; set; } // Items guardados
 }

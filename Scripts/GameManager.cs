@@ -181,4 +181,14 @@ public class GameManager : MonoBehaviour{
         }
         return retorno;
     }
+
+    public static string FillStringWithChar(object obj, string str, int maxLeng){
+        StringBuilder result = new StringBuilder();
+        int diff = maxLeng - obj.ToString().Length;
+        for (int x = 0; x < diff; x++){
+            result.Append(str);
+        }
+        result.Append(obj);
+        return result.ToString();
+    }
 }
